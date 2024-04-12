@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
 
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+import { MdOutlineAddBox } from "react-icons/md";
 import BooksCard from "../components/home/BooksCard";
 import BooksTable from "../components/home/BooksTable";
 
