@@ -38,7 +38,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .put(`http://localhost:3000/books/${id}`, data)
+      .put(`https://crud-server-ashen.vercel.app/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book Edited successfully", { variant: "success" });

@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3000/books")
+      .get("https://crud-server-ashen.vercel.app/books")
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);
