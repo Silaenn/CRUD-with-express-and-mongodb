@@ -5,7 +5,13 @@ import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
 
 const app = express();
-app.use(cors()); // Pindahkan baris ini ke sini, sebelum rute dan middleware lainnya
+app.use(
+  cors({
+    origin: "https://crud-web-two.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -19,13 +25,6 @@ app.listen(PORT, () => {
 
 app.use("/books", booksRoute);
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000",
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     allowedHeaders: ["Content-Type"],
-//   })
-// );
 mongoose
   .connect(mongoDBURL)
   .then(() => {
