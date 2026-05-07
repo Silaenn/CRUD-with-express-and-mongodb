@@ -27,7 +27,7 @@ const BookModal = ({ book, onClose }) => {
         <div className="flex items-center justify-between px-6 py-3 border-b border-border">
           <div className="flex items-center gap-3">
             {/* Icon placeholder — swap dengan icon hasil generate */}
-            {/* <img src="/icons/diamond-ornament.png" className="w-4 h-4 opacity-70" /> */}
+            <img src="/icons/diamond-ornament.png" className="w-4 h-4 opacity-70" />
             <span className="hud-label text-hud">RECORD_VIEW</span>
           </div>
           <div className="flex items-center gap-4">

@@ -96,9 +96,14 @@ const CreateBooks = () => {
             <InputField label="Author"       value={author}      onChange={setAuthor}      placeholder="ENTER_AUTHOR..." />
             <InputField label="Publish Year" value={publishYear} onChange={setPublishYear} placeholder="YYYY" />
 
-            {/* Divider */}
+            {/* Divider dengan chevron */}
             <div className="flex items-center gap-3 my-6">
-              <div className="w-2 h-2 bg-hud rotate-45" />
+              <img
+                src="/icons/chevron-yellow.png"
+                alt=""
+                className="w-8 h-auto opacity-50"
+                style={{ imageRendering: "pixelated" }}
+              />
               <div className="flex-1 h-[1px] bg-border" />
             </div>
 

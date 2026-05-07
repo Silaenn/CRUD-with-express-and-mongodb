@@ -5,13 +5,13 @@ const BackButton = ({ destination = "/" }) => (
     to={destination}
     className="group inline-flex items-center gap-3 font-mono text-hud-sm uppercase tracking-widest text-hud transition-all duration-100 hover:text-glow-hud"
   >
-    {/* Arrow */}
-    <span className="relative flex items-center gap-1">
-      <span className="block w-6 h-[2px] bg-hud transition-all duration-100 group-hover:w-8 group-hover:shadow-hud-sm" />
-      <span className="block w-0 h-0 border-t-4 border-b-4 border-r-4 border-transparent border-r-hud"
-        style={{ borderRightColor: "#FFB800", marginLeft: "-4px" }}
-      />
-    </span>
+    {/* Chevron arrow image — flipped horizontal */}
+    <img
+      src="/icons/chevron-yellow.png"
+      alt=""
+      className="w-8 h-auto opacity-80 group-hover:opacity-100 transition-opacity duration-100"
+      style={{ imageRendering: "pixelated", transform: "scaleX(1)" }}
+    />
 
     <span className="group-hover:text-glow-hud transition-all duration-100">
       BACK_TO_DASHBOARD
