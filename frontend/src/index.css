@@ -1,3 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=VT323&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ─── Base ────────────────────────────────────────────────────── */
+@layer base {
+  body {
+    @apply bg-void text-smoke font-sans;
+    @apply selection:bg-hud selection:text-void;
+    /* Subtle circuit grid background */
+    background-image:
+      linear-gradient(rgba(255, 184, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 184, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Scanline overlay global — pseudo on body */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.08) 2px,
+        rgba(0, 0, 0, 0.08) 4px);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-void;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-hud-dim;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-hud;
+  }
+}
+
+/* ─── HUD Corner Brackets ─────────────────────────────────────── */
+@layer components {
+
+  /* Wrap element dengan ini untuk corner bracket effect */
+  .hud-bracket {
+    @apply relative;
+  }
+
+  .hud-bracket::before,
+  .hud-bracket::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: #FFB800;
+    border-style: solid;
+  }
+
+  .hud-bracket::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+
+  .hud-bracket::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* Variant — semua 4 corner (butuh wrapper tambahan) */
+  .hud-bracket-full {
+    @apply relative;
+  }
+
+  .hud-bracket-full::before,
+  .hud-bracket-full::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: #FFB800;
+    border-style: solid;
+    pointer-events: none;
+  }
+
+  .hud-bracket-full::before {
+    top: -2px;
+    left: -2px;
+    border-width: 2px 0 0 2px;
+  }
+
+  .hud-bracket-full::after {
+    bottom: -2px;
+    right: -2px;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* ─── HUD Panel ─── */
+  .hud-panel {
+    @apply relative bg-obsidian border border-border;
+    @apply shadow-panel;
+  }
+
+  .hud-panel::before,
+  .hud-panel::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: #FFB800;
+    border-style: solid;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hud-panel::before {
+    top: -1px;
+    left: -1px;
+    border-width: 2px 0 0 2px;
+  }
+
+  .hud-panel::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* ─── HUD Label ─── */
+  .hud-label {
+    @apply font-mono text-hud-xs uppercase tracking-[0.25em] text-hud-dim;
+  }
+
+  /* ─── HUD Tag — status badge ─── */
+  .hud-tag {
+    @apply font-mono text-hud-xs uppercase tracking-widest px-2 py-0.5;
+    @apply border border-hud text-hud bg-hud/10;
+  }
+
+  .hud-tag-danger {
+    @apply font-mono text-hud-xs uppercase tracking-widest px-2 py-0.5;
+    @apply border border-danger text-danger bg-danger/10;
+  }
+
+  /* ─── Hazard stripe bar ─── */
+  .hazard-bar {
+    height: 6px;
+    background: repeating-linear-gradient(45deg,
+        #FFB800 0px, #FFB800 6px,
+        #0a0a0f 6px, #0a0a0f 12px);
+  }
+
+  .hazard-bar-red {
+    height: 6px;
+    background: repeating-linear-gradient(45deg,
+        #FF2D2D 0px, #FF2D2D 6px,
+        #0a0a0f 6px, #0a0a0f 12px);
+  }
+
+  .hazard-bar-sm {
+    height: 3px;
+    background: repeating-linear-gradient(45deg,
+        #FFB800 0px, #FFB800 4px,
+        #0a0a0f 4px, #0a0a0f 8px);
+  }
+
+  /* ─── Crosshair decoration ─── */
+  .crosshair {
+    @apply relative w-6 h-6 inline-flex items-center justify-center;
+  }
+
+  .crosshair::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #FFB800;
+    box-shadow: 0 0 6px #FFB800;
+  }
+
+  .crosshair::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background: #FFB800;
+    box-shadow: 0 0 6px #FFB800;
+  }
+
+  /* ─── Buttons ─── */
+  .btn-hud {
+    @apply relative font-mono text-hud-sm uppercase tracking-widest;
+    @apply border border-hud text-hud bg-transparent;
+    @apply px-6 py-3 transition-all duration-100;
+    @apply hover:bg-hud hover:text-void hover:shadow-hud;
+    @apply active:scale-[0.98];
+  }
+
+  .btn-hud::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #FFD700;
+    border-left: 2px solid #FFD700;
+  }
+
+  .btn-hud::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid #FFD700;
+    border-right: 2px solid #FFD700;
+  }
+
+  .btn-danger-hud {
+    @apply relative font-mono text-hud-sm uppercase tracking-widest;
+    @apply border border-danger text-danger bg-transparent;
+    @apply px-6 py-3 transition-all duration-100;
+    @apply hover:bg-danger hover:text-void hover:shadow-danger;
+    @apply active:scale-[0.98];
+  }
+
+  .btn-danger-hud::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #FF5555;
+    border-left: 2px solid #FF5555;
+  }
+
+  .btn-danger-hud::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid #FF5555;
+    border-right: 2px solid #FF5555;
+  }
+
+  /* ─── Input field ─── */
+  .input-hud {
+    @apply w-full bg-transparent outline-none;
+    @apply font-display text-4xl text-smoke;
+    @apply border-b-2 border-dim;
+    @apply focus:border-hud transition-colors duration-200;
+    @apply py-3;
+    caret-color: #FFB800;
+  }
+
+  /* ─── Glitch text ─── */
+  .text-glitch {
+    @apply animate-glitch;
+    position: relative;
+  }
+
+  .text-glitch::before,
+  .text-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .text-glitch::before {
+    color: #FF2D2D;
+    animation: glitchTop 3s infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    transform: translate(-2px);
+  }
+
+  .text-glitch::after {
+    color: #FFB800;
+    animation: glitchBottom 3s infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    transform: translate(2px);
+  }
+
+  /* ─── HUD coordinate text (pojok dekoratif) ─── */
+  .hud-coords {
+    @apply font-mono text-hud-xs text-hud-dim/50 uppercase tracking-widest;
+  }
+
+  /* ─── Flicker text ─── */
+  .text-flicker {
+    @apply animate-flicker;
+  }
+}
+
+/* ─── Extra keyframes (tidak bisa di tailwind.config) ─────────── */
+@layer utilities {
+  @keyframes glitchTop {
+
+    0%,
+    90%,
+    100% {
+      transform: translate(-2px);
+      opacity: 0;
+    }
+
+    92% {
+      transform: translate(2px);
+      opacity: 0.7;
+    }
+
+    96% {
+      transform: translate(-1px);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes glitchBottom {
+
+    0%,
+    90%,
+    100% {
+      transform: translate(2px);
+      opacity: 0;
+    }
+
+    93% {
+      transform: translate(-2px);
+      opacity: 0.7;
+    }
+
+    97% {
+      transform: translate(1px);
+      opacity: 0.5;
+    }
+  }
+
+  /* Neon text glow utilities */
+  .text-glow-hud {
+    text-shadow: 0 0 8px #FFB800, 0 0 20px rgba(255, 184, 0, 0.5);
+  }
+
+  .text-glow-danger {
+    text-shadow: 0 0 8px #FF2D2D, 0 0 20px rgba(255, 45, 45, 0.5);
+  }
+
+  /* Border glow */
+  .border-glow-hud {
+    box-shadow: 0 0 8px #FFB800, inset 0 0 8px rgba(255, 184, 0, 0.1);
+  }
+
+  .border-glow-danger {
+    box-shadow: 0 0 8px #FF2D2D, inset 0 0 8px rgba(255, 45, 45, 0.1);
+  }
+
+  /* Collapsed: nggak perlu ini lagi di tailwind */
+  .border-collapse-grid {
+    @apply -ml-[2px] -mt-[2px];
+  }
+}

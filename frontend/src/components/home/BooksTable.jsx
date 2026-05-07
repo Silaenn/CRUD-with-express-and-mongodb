@@ -3,47 +3,52 @@ import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const BooksTable = ({ books }) => {
-  return (
-    <table className="w-full border-separate border-spacing-2">
+const BooksTable = ({ books }) => (
+  <div className="overflow-x-auto">
+    {/* Table header bar */}
+    <div className="hazard-bar-sm w-full mb-0" />
+
+    <table className="w-full border-collapse">
       <thead>
-        <tr>
-          <th className="border border-slate-600 rounded-md">No</th>
-          <th className="border border-slate-600 rounded-md">Title</th>
-          <th className="border border-slate-600 rounded-md max-md:hidden">
-            Author
-          </th>
-          <th className="border border-slate-600 rounded-md max-md:hidden">
-            Publish Year
-          </th>
-          <th className="border border-slate-600 rounded-md">Operations</th>
+        <tr className="border-b border-hud/30">
+          {["#", "Title", "Author", "Year", "OPS"].map((h, i) => (
+            <th
+              key={h}
+              className={`py-3 px-4 text-left hud-label text-hud-dim ${i >= 2 && i <= 3 ? "max-md:hidden" : ""}`}
+            >
+              {h}
+            </th>
+          ))}
         </tr>
       </thead>
       <tbody>
         {books.map((book, index) => (
-          <tr key={book.id} className="h-8">
-            <td className="border border-slate-700 rounded-md text-center">
-              {index + 1}
+          <tr
+            key={book._id}
+            className="border-b border-border hover:bg-obsidian hover:border-hud/20 transition-all duration-100 group"
+          >
+            <td className="py-3 px-4 font-display text-sm text-hud/40 group-hover:text-hud/80 transition-colors">
+              {String(index + 1).padStart(2, "0")}
             </td>
-            <td className="border border-slate-700 rounded-md text-center">
+            <td className="py-3 px-4 font-mono text-sm text-smoke uppercase tracking-wide">
               {book.title}
             </td>
-            <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+            <td className="py-3 px-4 font-mono text-sm text-muted uppercase max-md:hidden">
               {book.author}
             </td>
-            <td className="border border-slate-700 rounded-md text-center max-md:hidden">
-              {book.publishYear}
+            <td className="py-3 px-4 max-md:hidden">
+              <span className="hud-tag">{book.publishYear}</span>
             </td>
-            <td className="border border-slate-700 rounded-md text-center">
-              <div className="flex justify-center gap-x-4">
+            <td className="py-3 px-4">
+              <div className="flex items-center gap-4">
                 <Link to={`/books/details/${book._id}`}>
-                  <BsInfoCircle className="text-2xl text-green-800" />
+                  <BsInfoCircle className="text-lg text-muted hover:text-hud transition-colors hover:drop-shadow-[0_0_4px_#FFB800]" />
                 </Link>
-                <Link to={`books/edit/${book._id}`}>
-                  <AiOutlineEdit className="text-2xl text-yellow-600" />
+                <Link to={`/books/edit/${book._id}`}>
+                  <AiOutlineEdit className="text-lg text-muted hover:text-hud transition-colors hover:drop-shadow-[0_0_4px_#FFB800]" />
                 </Link>
-                <Link to={`books/delete/${book._id}`}>
-                  <MdOutlineDelete className="text-2xl text-red-600" />
+                <Link to={`/books/delete/${book._id}`}>
+                  <MdOutlineDelete className="text-lg text-muted hover:text-danger transition-colors hover:drop-shadow-[0_0_4px_#FF2D2D]" />
                 </Link>
               </div>
             </td>
@@ -51,7 +56,9 @@ const BooksTable = ({ books }) => {
         ))}
       </tbody>
     </table>
-  );
-};
+
+    <div className="hazard-bar-sm w-full mt-0" />
+  </div>
+);
 
 export default BooksTable;
