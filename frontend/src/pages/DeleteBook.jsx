@@ -44,7 +44,7 @@ const DeleteBook = () => {
             className="mb-5"
           />
 
-          <div className="flex flex-col gap-5 sm:flex-row sm:justify-between sm:items-end">
+          <div>
             <div>
               <h1
                 className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase"
@@ -53,9 +53,6 @@ const DeleteBook = () => {
                 DELETE
               </h1>
               <div className="hazard-bar-red w-full mt-2" style={{ height: "3px" }} />
-            </div>
-            <div className="mb-1">
-              <BackButton />
             </div>
           </div>
         </div>
