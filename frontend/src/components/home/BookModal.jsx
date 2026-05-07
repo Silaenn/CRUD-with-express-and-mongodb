@@ -1,8 +1,45 @@
+import { useEffect, useRef } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { PiBookOpenTextLight } from "react-icons/pi";
 import { BiUserCircle } from "react-icons/bi";
 
 const BookModal = ({ book, onClose }) => {
+  const modalRef = useRef(null);
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !modalRef.current) return;
+
+      const focusableElements = modalRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onClose]);
+
   return (
     <div
       onClick={onClose}
@@ -13,6 +50,10 @@ const BookModal = ({ book, onClose }) => {
         onClick={(e) => e.stopPropagation()}
         className="relative w-[560px] max-w-full bg-obsidian border border-hud/30 animate-slide-in"
         style={{ boxShadow: "0 0 40px rgba(255,184,0,0.15), inset 0 0 40px rgba(255,184,0,0.03)" }}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="book-modal-title"
+        ref={modalRef}
       >
         {/* Corner brackets */}
         <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-hud" />
@@ -27,14 +68,18 @@ const BookModal = ({ book, onClose }) => {
         <div className="flex items-center justify-between px-6 py-3 border-b border-border">
           <div className="flex items-center gap-3">
             {/* Icon placeholder — swap dengan icon hasil generate */}
-            <img src="/icons/diamond-ornament.png" className="w-4 h-4 opacity-70" />
-            <span className="hud-label text-hud">RECORD_VIEW</span>
+            <img src="/icons/diamond-ornament.png" alt="" className="w-4 h-4 opacity-70" />
+            <span className="hud-label text-hud" id="book-modal-title">RECORD_VIEW</span>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="hud-coords">ID:{book._id?.slice(-6).toUpperCase()}</span>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <span className="inline-flex items-center rounded-sm border border-hud/40 bg-hud/10 px-2.5 py-1 font-mono text-[0.68rem] tracking-[0.12em] text-hud">
+              ID: <span className="ml-1 text-smoke">{book._id?.slice(-6).toUpperCase()}</span>
+            </span>
             <button
               onClick={onClose}
-              className="text-muted hover:text-hud transition-colors duration-100 hover:text-glow-hud"
+              className="text-muted hover:text-hud transition-colors duration-100 hover:text-glow-hud focus-visible:outline-none focus-visible:text-hud"
+              aria-label="Close record view"
+              ref={closeButtonRef}
             >
               <AiOutlineClose className="text-lg" />
             </button>
@@ -60,7 +105,7 @@ const BookModal = ({ book, onClose }) => {
           </div>
 
           {/* Author */}
-          <div className="flex items-center gap-3 mb-6 pl-9">
+          <div className="flex items-center gap-3 mb-6">
             <BiUserCircle className="text-hud-dim text-lg flex-shrink-0" />
             <h4 className="font-mono text-sm text-muted uppercase tracking-widest">
               {book.author}

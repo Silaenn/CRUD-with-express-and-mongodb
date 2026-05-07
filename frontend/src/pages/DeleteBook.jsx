@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { API_URL } from "../config";
+import MetaChip from "../components/ui/MetaChip";
 
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
@@ -31,39 +32,44 @@ const DeleteBook = () => {
   return (
     <div className="min-h-screen bg-void text-smoke">
       {/* Header — danger theme */}
-      <header className="relative px-6 pt-8 pb-6 border-b border-danger/30 overflow-hidden">
+      <header className="relative border-b border-danger/30 overflow-hidden">
         {/* Red tint overlay */}
         <div className="absolute inset-0 bg-danger/[0.03] pointer-events-none" />
 
-        <div className="hud-coords mb-4" style={{ color: "rgba(255,45,45,0.5)" }}>
-          SYS://LIBRARY_DATABASE/DELETE/{id?.slice(-6).toUpperCase()}
-        </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
+          <MetaChip
+            label="SYSTEM"
+            value={`LIBRARY DATABASE · DELETE ${id?.slice(-6).toUpperCase()}`}
+            variant="danger"
+            className="mb-5"
+          />
 
-        <div className="flex justify-between items-end gap-4">
-          <div>
-            <h1
-              className="font-display text-5xl md:text-8xl leading-none tracking-tighter uppercase"
-              style={{ color: "#FF2D2D", textShadow: "0 0 30px rgba(255,45,45,0.4)" }}
-            >
-              DELETE
-            </h1>
-            {/* Red hazard bar */}
-            <div className="hazard-bar-red w-full mt-2" style={{ height: "3px" }} />
-          </div>
-          <div className="mb-2">
-            <BackButton />
+          <div className="flex flex-col gap-5 sm:flex-row sm:justify-between sm:items-end">
+            <div>
+              <h1
+                className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase"
+                style={{ color: "#FF2D2D", textShadow: "0 0 30px rgba(255,45,45,0.4)" }}
+              >
+                DELETE
+              </h1>
+              <div className="hazard-bar-red w-full mt-2" style={{ height: "3px" }} />
+            </div>
+            <div className="mb-1">
+              <BackButton />
+            </div>
           </div>
         </div>
       </header>
 
       {/* Main */}
-      <main className="px-6 md:px-12 py-10">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-8 sm:py-10">
         {loading ? (
           <Spinner />
         ) : (
-          <div className="flex flex-col gap-8 max-w-xl">
+          <div className="flex flex-col gap-8 max-w-2xl">
             {/* Warning panel */}
-            <div className="relative border border-danger/30 bg-obsidian p-6"
+            <div
+              className="relative border border-danger/30 bg-obsidian p-4 sm:p-6"
               style={{ boxShadow: "0 0 20px rgba(255,45,45,0.08), inset 0 0 20px rgba(255,45,45,0.03)" }}
             >
               {/* Corner brackets — danger color */}
@@ -97,7 +103,7 @@ const DeleteBook = () => {
                 CONFIRM PERMANENT REMOVAL
               </h3>
               <p className="font-mono text-xs text-muted uppercase tracking-wide">
-                // THIS ACTION CANNOT BE UNDONE. RECORD WILL BE PERMANENTLY DELETED FROM DATABASE.
+                {"// THIS ACTION CANNOT BE UNDONE. RECORD WILL BE PERMANENTLY DELETED FROM DATABASE."}
               </p>
             </div>
 

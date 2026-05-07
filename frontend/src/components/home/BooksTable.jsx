@@ -41,13 +41,25 @@ const BooksTable = ({ books }) => (
             </td>
             <td className="py-3 px-4">
               <div className="flex items-center gap-4">
-                <Link to={`/books/details/${book._id}`}>
+                <Link
+                  to={`/books/details/${book._id}`}
+                  aria-label={`Open details for ${book.title}`}
+                  className="focus-visible:outline-none focus-visible:text-hud"
+                >
                   <BsInfoCircle className="text-lg text-muted hover:text-hud transition-colors hover:drop-shadow-[0_0_4px_#FFB800]" />
                 </Link>
-                <Link to={`/books/edit/${book._id}`}>
+                <Link
+                  to={`/books/edit/${book._id}`}
+                  aria-label={`Edit ${book.title}`}
+                  className="focus-visible:outline-none focus-visible:text-hud"
+                >
                   <AiOutlineEdit className="text-lg text-muted hover:text-hud transition-colors hover:drop-shadow-[0_0_4px_#FFB800]" />
                 </Link>
-                <Link to={`/books/delete/${book._id}`}>
+                <Link
+                  to={`/books/delete/${book._id}`}
+                  aria-label={`Delete ${book.title}`}
+                  className="focus-visible:outline-none focus-visible:text-danger"
+                >
                   <MdOutlineDelete className="text-lg text-muted hover:text-danger transition-colors hover:drop-shadow-[0_0_4px_#FF2D2D]" />
                 </Link>
               </div>

@@ -1,7 +1,7 @@
 import BookSingleCard from "./BookSingleCard";
 
 const BooksCard = ({ books }) => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-l border-t border-hud/20">
+  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 border-l border-t border-hud/20">
     {books.length === 0 ? (
       <div className="col-span-3 flex flex-col items-center justify-center py-24 gap-4">
         <img

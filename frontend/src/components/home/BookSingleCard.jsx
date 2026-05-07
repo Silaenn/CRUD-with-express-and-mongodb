@@ -7,7 +7,7 @@ const BookSingleCard = ({ book, index }) => {
 
   return (
     <>
-      <div className="group relative border-b border-r border-hud/20 p-6 h-[360px] flex flex-col justify-between overflow-hidden transition-all duration-150 hover:border-hud/60 hover:bg-obsidian cursor-pointer"
+      <div className="group relative border-b border-r border-hud/20 p-4 sm:p-6 min-h-[320px] sm:min-h-[340px] md:h-[360px] flex flex-col justify-between overflow-hidden transition-all duration-150 hover:border-hud/60 hover:bg-obsidian cursor-pointer"
         style={{ background: "rgba(10,10,15,0.8)" }}
       >
         {/* Corner brackets — visible on hover */}
@@ -22,11 +22,11 @@ const BookSingleCard = ({ book, index }) => {
         />
 
         {/* Icon placeholder — pojok kanan bawah watermark */}
-        <img src="/icons/tribal-flame.png" className="absolute bottom-16 right-4 w-12 opacity-50 group-hover:opacity-80 transition-opacity duration-150" />
+        <img src="/icons/tribal-flame.png" alt="" className="absolute bottom-16 right-4 w-12 opacity-50 group-hover:opacity-80 transition-opacity duration-150" />
 
         {/* Top row */}
         <div className="flex justify-between items-start">
-          <span className="font-display text-3xl text-hud/20 group-hover:text-hud/60 transition-all duration-150 group-hover:text-glow-hud">
+          <span className="inline-flex items-center justify-center min-w-11 h-11 px-2 font-display text-2xl sm:text-3xl text-hud border border-hud/40 bg-hud/10 shadow-hud-sm group-hover:border-hud group-hover:bg-hud/15 transition-all duration-150">
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="flex flex-col items-end gap-1">
@@ -54,28 +54,29 @@ const BookSingleCard = ({ book, index }) => {
         </div>
 
         {/* Actions — slide up on hover */}
-        <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-hud/0 group-hover:border-hud/20 transition-all duration-150 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0">
+        <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-hud/20 transition-all duration-150 opacity-100 translate-y-0 md:border-hud/0 md:group-hover:border-hud/20 md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0">
           <button
             onClick={() => setShowModal(true)}
-            className="font-mono text-hud-xs uppercase tracking-widest text-hud border-b border-hud/50 hover:border-hud pb-0.5 transition-colors duration-100 hover:text-glow-hud"
+            aria-label={`View quick details for ${book.title}`}
+            className="font-mono text-hud-xs uppercase tracking-widest text-hud border-b border-hud/50 hover:border-hud pb-0.5 transition-colors duration-100 hover:text-glow-hud focus-visible:outline-none focus-visible:border-hud"
           >
             [VIEW]
           </button>
           <Link
             to={`/books/details/${book._id}`}
-            className="font-mono text-hud-xs uppercase tracking-widest text-muted border-b border-muted/30 hover:text-hud hover:border-hud pb-0.5 transition-colors duration-100"
+            className="font-mono text-hud-xs uppercase tracking-widest text-muted border-b border-muted/30 hover:text-hud hover:border-hud pb-0.5 transition-colors duration-100 focus-visible:outline-none focus-visible:text-hud focus-visible:border-hud"
           >
             [INFO]
           </Link>
           <Link
             to={`/books/edit/${book._id}`}
-            className="font-mono text-hud-xs uppercase tracking-widest text-muted border-b border-muted/30 hover:text-hud hover:border-hud pb-0.5 transition-colors duration-100"
+            className="font-mono text-hud-xs uppercase tracking-widest text-muted border-b border-muted/30 hover:text-hud hover:border-hud pb-0.5 transition-colors duration-100 focus-visible:outline-none focus-visible:text-hud focus-visible:border-hud"
           >
             [EDIT]
           </Link>
           <Link
             to={`/books/delete/${book._id}`}
-            className="font-mono text-hud-xs uppercase tracking-widest text-danger border-b border-danger/50 hover:border-danger pb-0.5 transition-colors duration-100 hover:text-glow-danger"
+            className="font-mono text-hud-xs uppercase tracking-widest text-danger border-b border-danger/50 hover:border-danger pb-0.5 transition-colors duration-100 hover:text-glow-danger focus-visible:outline-none focus-visible:border-danger"
           >
             [DELETE]
           </Link>
