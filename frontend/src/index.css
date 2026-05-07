@@ -289,7 +289,7 @@
   .input-hud {
     @apply w-full bg-transparent outline-none;
     @apply font-display text-4xl text-smoke;
-    @apply border-b-2 border-dim;
+    @apply border-b-2 border-hud;
     @apply focus:border-hud transition-colors duration-200;
     @apply py-3;
     caret-color: #FFB800;

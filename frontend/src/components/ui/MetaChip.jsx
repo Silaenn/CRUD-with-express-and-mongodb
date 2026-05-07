@@ -16,10 +16,10 @@ const MetaChip = ({ label, value, variant = "hud", className = "" }) => {
 
   return (
     <div
-      className={`inline-flex flex-wrap items-center gap-2 rounded-sm border px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] ${activeVariant.container} ${className}`}
+      className={`inline-flex flex-wrap items-center gap-2 rounded-sm border px-3 py-1.5 font-mono text-[0.72rem] ${activeVariant.container} ${className}`}
     >
-      <span className={`font-semibold ${activeVariant.label}`}>{label}</span>
-      <span className={`break-all tracking-[0.08em] ${activeVariant.value}`}>{value}</span>
+      <span className={`font-semibold uppercase tracking-[0.14em] ${activeVariant.label}`}>{label}</span>
+      <span className={`break-all normal-case tracking-[0.02em] ${activeVariant.value}`}>{value}</span>
     </div>
   );
 };

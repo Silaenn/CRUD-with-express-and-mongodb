@@ -9,9 +9,11 @@ import { API_URL } from "../config";
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
+  const fetchBooks = () => {
     setLoading(true);
+    setErrorMessage("");
     axios
       .get(`${API_URL}/books`)
       .then((response) => {
@@ -19,9 +21,14 @@ const Home = () => {
         setLoading(false);
       })
       .catch((error) => {
+        setErrorMessage(error.response?.data?.message || "Failed to fetch records.");
         console.log(error);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchBooks();
   }, []);
 
   return (
@@ -77,12 +84,6 @@ const Home = () => {
             <div className="flex-1 h-[1px] bg-hud/20" />
             <MetaChip label="ACCESS" value="PUBLIC" className="px-2.5 py-1" />
             <div className="flex-1 h-[1px] bg-hud/20" />
-            <img
-              src="/icons/data-link.png"
-              alt=""
-              className="w-5 h-5 sm:w-6 sm:h-6 opacity-30 flex-shrink-0"
-              style={{ imageRendering: "pixelated" }}
-            />
           </div>
         </div>
       </header>
@@ -92,6 +93,19 @@ const Home = () => {
         {loading ? (
           <div className="flex justify-center py-24">
             <Spinner />
+          </div>
+        ) : errorMessage ? (
+          <div className="max-w-3xl mx-auto mt-12 border border-danger/40 bg-obsidian/80 p-6 sm:p-8">
+            <p className="font-display text-2xl text-danger tracking-[0.04em]">DATA LINK FAILED</p>
+            <p className="font-mono text-sm text-muted mt-3">{errorMessage}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button className="btn-danger-hud h-11 inline-flex items-center" onClick={fetchBooks}>
+                [!] RETRY_FETCH
+              </button>
+              <Link to="/books/create" className="btn-hud h-11 inline-flex items-center">
+                [+] ADD_ENTRY
+              </Link>
+            </div>
           </div>
         ) : (
           <BooksCard books={books} />

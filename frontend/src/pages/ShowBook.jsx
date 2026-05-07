@@ -40,7 +40,7 @@ const ShowBook = () => {
         {label}
       </span>
       {/* Value */}
-      <span className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-smoke uppercase tracking-tight group-hover:text-hud transition-colors duration-150 break-words">
+      <span className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-smoke tracking-[0.02em] group-hover:text-hud transition-colors duration-150 break-words">
         {value}
       </span>
     </div>

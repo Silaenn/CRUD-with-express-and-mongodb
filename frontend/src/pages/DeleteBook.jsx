@@ -90,36 +90,23 @@ const DeleteBook = () => {
                   style={{ imageRendering: "pixelated" }}
                 />
               </div>
+
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 border-2 border-danger rotate-45" />
                 <div className="w-3 h-3 border-2 border-danger/50 rotate-45" />
                 <div className="w-3 h-3 border-2 border-danger/20 rotate-45" />
               </div>
-
+              
               <h3 className="font-display text-2xl md:text-4xl leading-tight uppercase text-smoke mb-2">
                 CONFIRM PERMANENT REMOVAL
               </h3>
-              <p className="font-mono text-xs text-muted uppercase tracking-wide">
+              <p className="font-mono text-xs text-muted/80 tracking-[0.02em]">
                 {"// THIS ACTION CANNOT BE UNDONE. RECORD WILL BE PERMANENTLY DELETED FROM DATABASE."}
               </p>
             </div>
 
-            {/* Enemy bar — nama book sebagai "target" */}
-            <img
-              src="/icons/bar-enemy.png"
-              alt="Target record"
-              className="w-full max-w-sm opacity-80"
-              style={{ imageRendering: "pixelated" }}
-            />
-
             {/* Action buttons */}
             <div className="flex flex-wrap items-center gap-4">
-              <img
-                src="/icons/chevron-red.png"
-                alt=""
-                className="w-8 h-auto opacity-70"
-                style={{ imageRendering: "pixelated" }}
-              />
               <button onClick={handleDeleteBook} className="btn-danger-hud">
                 [!] DELETE_PERMANENTLY
               </button>

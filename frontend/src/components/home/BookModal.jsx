@@ -99,7 +99,7 @@ const BookModal = ({ book, onClose }) => {
           {/* Title */}
           <div className="flex items-start gap-3 mb-3">
             <PiBookOpenTextLight className="text-hud text-2xl mt-1 flex-shrink-0" />
-            <h2 className="font-display text-2xl text-smoke leading-tight uppercase tracking-wide">
+            <h2 className="font-display text-2xl text-smoke leading-tight tracking-[0.02em] break-words">
               {book.title}
             </h2>
           </div>
@@ -107,7 +107,7 @@ const BookModal = ({ book, onClose }) => {
           {/* Author */}
           <div className="flex items-center gap-3 mb-6">
             <BiUserCircle className="text-hud-dim text-lg flex-shrink-0" />
-            <h4 className="font-mono text-sm text-muted uppercase tracking-widest">
+            <h4 className="font-mono text-sm text-muted tracking-[0.04em] break-words">
               {book.author}
             </h4>
           </div>
@@ -120,7 +120,7 @@ const BookModal = ({ book, onClose }) => {
           </div>
 
           {/* Description */}
-          <p className="font-mono text-xs text-muted/70 leading-relaxed uppercase tracking-wide">
+          <p className="font-mono text-[0.78rem] text-muted/80 leading-relaxed tracking-[0.02em]">
             {`// ENTRY: `}
             <span className="text-hud-dim">{book.title}</span>
             {` — authored by `}
