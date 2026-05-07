@@ -44,8 +44,6 @@ export const InputField = ({
       />
     </div>
 
-    {/* Bottom scan line */}
-    <div className="h-[1px] w-full mt-1 bg-gradient-to-r from-hud/50 via-hud/10 to-transparent" />
   </div>
 );
 
