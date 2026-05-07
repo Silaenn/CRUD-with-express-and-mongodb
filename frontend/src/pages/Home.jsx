@@ -82,7 +82,9 @@ const Home = () => {
               style={{ imageRendering: "pixelated" }}
             />
             <div className="flex-1 h-[1px] bg-hud/20" />
-            <MetaChip label="ACCESS" value="PUBLIC" className="px-2.5 py-1" />
+            <span className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-hud/80">
+              ACCESS <span className="text-smoke">PUBLIC</span>
+            </span>
             <div className="flex-1 h-[1px] bg-hud/20" />
           </div>
         </div>
