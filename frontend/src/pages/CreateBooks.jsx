@@ -61,11 +61,11 @@ const CreateBooks = () => {
 
     const normalizedTitle = title.trim();
     const normalizedAuthor = author.trim();
-    const yearNumber = Number(publishYear);
+    const yearNumber = publishYear ? Number(publishYear.split('-')[0]) : 0;
     const isValidYear = Number.isInteger(yearNumber) && yearNumber >= 1000 && yearNumber <= currentYear;
 
     if (!normalizedTitle || !normalizedAuthor || !isValidYear) {
-      enqueueSnackbar(`Please fill all fields and use a valid year (1000-${currentYear})`, { variant: "error" });
+      enqueueSnackbar(`Please fill all fields and use a valid date`, { variant: "error" });
       return;
     }
 
@@ -147,13 +147,11 @@ const CreateBooks = () => {
             <InputField id="author" label="Author" value={author} onChange={setAuthor} placeholder="ENTER_AUTHOR..." />
             <InputField
               id="publishYear"
-              label="Publish Year"
+              label="Publish Date"
               value={publishYear}
               onChange={setPublishYear}
-              placeholder="YYYY"
-              type="number"
-              min={1000}
-              max={currentYear}
+              placeholder="YYYY-MM-DD"
+              type="date"
             />
 
             {/* Divider dengan chevron */}

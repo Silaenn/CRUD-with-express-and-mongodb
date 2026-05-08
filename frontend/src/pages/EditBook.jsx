@@ -24,7 +24,9 @@ const EditBook = () => {
       .get(`${API_URL}/books/${id}`)
       .then((res) => {
         setAuthor(res.data.author);
-        setPublishYear(String(res.data.publishYear ?? ""));
+        // Convert year to date format (YYYY-01-01)
+        const year = res.data.publishYear ? res.data.publishYear : new Date().getFullYear();
+        setPublishYear(`${year}-01-01`);
         setTitle(res.data.title);
         setLoading(false);
       })
@@ -40,11 +42,11 @@ const EditBook = () => {
 
     const normalizedTitle = title.trim();
     const normalizedAuthor = author.trim();
-    const yearNumber = Number(publishYear);
+    const yearNumber = publishYear ? Number(publishYear.split('-')[0]) : 0;
     const isValidYear = Number.isInteger(yearNumber) && yearNumber >= 1000 && yearNumber <= currentYear;
 
     if (!normalizedTitle || !normalizedAuthor || !isValidYear) {
-      enqueueSnackbar(`Please fill all fields and use a valid year (1000-${currentYear})`, { variant: "error" });
+      enqueueSnackbar(`Please fill all fields and use a valid date`, { variant: "error" });
       return;
     }
 
@@ -124,12 +126,11 @@ const EditBook = () => {
             <InputField id="author" label="Author" value={author} onChange={setAuthor} />
             <InputField
               id="publishYear"
-              label="Publish Year"
+              label="Publish Date"
               value={publishYear}
               onChange={setPublishYear}
-              type="number"
-              min={1000}
-              max={currentYear}
+              placeholder="YYYY-MM-DD"
+              type="date"
             />
 
             <div className="flex items-center gap-2 sm:gap-3 my-4 sm:my-6">
