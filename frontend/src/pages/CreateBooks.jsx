@@ -109,9 +109,11 @@ const CreateBooks = () => {
       {/* Main */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-8 sm:py-10">
         {loading ? (
-          <Spinner />
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <Spinner />
+          </div>
         ) : (
-          <form className="flex flex-col" onSubmit={handleSaveBook}>
+          <form className="flex flex-col bg-void/90 px-4 py-2 sm:px-6" onSubmit={handleSaveBook}>
             {/* Form section label */}
             <div className="flex items-center gap-3 mb-8">
               <span className="hud-tag">NEW_ENTRY</span>

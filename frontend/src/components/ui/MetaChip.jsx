@@ -1,7 +1,7 @@
 const MetaChip = ({ label, value, variant = "hud", className = "" }) => {
   const variants = {
     hud: {
-      container: "border-hud/40 bg-hud/10",
+      container: "border-hud/40 bg-hud/15",
       label: "text-hud",
       value: "text-smoke",
     },

@@ -61,7 +61,9 @@ const DeleteBook = () => {
       {/* Main */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-8 sm:py-10">
         {loading ? (
-          <Spinner />
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <Spinner variant="danger" />
+          </div>
         ) : (
           <div className="flex flex-col gap-8 max-w-2xl">
             {/* Warning panel */}

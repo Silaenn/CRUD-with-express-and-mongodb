@@ -35,7 +35,7 @@ const Home = () => {
     <div className="min-h-screen bg-void">
 
       {/* Header */}
-      <header className="relative overflow-hidden">
+      <header className="relative overflow-hidden ">
         {/* Background circuit decoration */}
         <div className="absolute inset-0 opacity-30 pointer-events-none"
           style={{
@@ -56,14 +56,16 @@ const Home = () => {
                 style={{ imageRendering: "pixelated" }}
               /> */}
               <div className="flex items-center gap-3 sm:gap-4">
-                <div
-                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
-                  style={{
-                    background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)",
-                  }}
-                />
+                <div className="flex gap-1.5">
+                  <div
+                    className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                    style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                  />
+                  <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
+                </div>
                 <h1
                   className="font-display text-[clamp(2.75rem,11vw,10rem)] leading-none tracking-tight uppercase text-smoke animate-flicker"
+                  style={{ textShadow: "0 0 40px rgba(255,184,0,0.4), 0 0 80px rgba(255,184,0,0.2)" }}
                   data-text="BOOKS"
                 >
                   BOOKS
@@ -95,7 +97,7 @@ const Home = () => {
       {/* Main */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pb-12">
         {loading ? (
-          <div className="flex justify-center py-24">
+          <div className="flex justify-center min-h-[60vh]">
             <Spinner />
           </div>
         ) : errorMessage ? (

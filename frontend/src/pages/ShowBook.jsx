@@ -73,7 +73,9 @@ const ShowBook = () => {
       {/* Main */}
       <main className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8">
         {loading ? (
-          <Spinner />
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <Spinner />
+          </div>
         ) : (
           <div className="max-w-4xl">
             {/* Record badge */}
