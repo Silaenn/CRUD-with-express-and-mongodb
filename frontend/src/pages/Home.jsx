@@ -48,28 +48,31 @@ const Home = () => {
           <MetaChip label="SYSTEM" value="LIBRARY DATABASE · ROOT" className="mb-5" />
 
           <div className="flex flex-col gap-6 lg:flex-row lg:justify-between lg:items-end">
-            <div className="relative flex items-end gap-4 sm:gap-6">
-              {/* <img
-                src="/icons/skull-fire.png"
-                alt=""
-                className="w-16 sm:w-20 md:w-24 lg:w-28 h-auto opacity-80 mb-1 sm:mb-2 flex-shrink-0"
-                style={{ imageRendering: "pixelated" }}
-              /> */}
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="flex gap-1.5">
-                  <div
-                    className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
-                    style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
-                  />
-                  <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
-                </div>
-                <h1
-                  className="font-display text-[clamp(2.75rem,11vw,10rem)] leading-none tracking-tight uppercase text-smoke animate-flicker"
-                  style={{ textShadow: "0 0 40px rgba(255,184,0,0.4), 0 0 80px rgba(255,184,0,0.2)" }}
-                  data-text="BOOKS"
-                >
-                  BOOKS
-                </h1>
+            <div className="relative flex items-center gap-3 sm:gap-4">
+              {/* Hazard bar kiri — tampil hanya di lg ke atas */}
+              <div className="hidden lg:flex gap-1.5">
+                <div
+                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                  style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                />
+                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
+              </div>
+
+              <h1
+                className="font-display text-[clamp(2.75rem,11vw,10rem)] leading-none tracking-tight uppercase text-smoke animate-flicker"
+                style={{ textShadow: "0 0 40px rgba(255,184,0,0.4), 0 0 80px rgba(255,184,0,0.2)" }}
+                data-text="BOOKS"
+              >
+                BOOKS
+              </h1>
+
+              {/* Hazard bar kanan — tampil hanya di bawah lg */}
+              <div className="flex lg:hidden gap-1.5">
+                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
+                <div
+                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                  style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                />
               </div>
             </div>
 
