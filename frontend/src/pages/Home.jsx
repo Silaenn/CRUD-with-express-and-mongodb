@@ -35,7 +35,7 @@ const Home = () => {
     <div className="min-h-screen bg-void">
 
       {/* Header */}
-      <header className="relative border-b border-hud/30 overflow-hidden">
+      <header className="relative overflow-hidden">
         {/* Background circuit decoration */}
         <div className="absolute inset-0 opacity-30 pointer-events-none"
           style={{
@@ -49,20 +49,25 @@ const Home = () => {
 
           <div className="flex flex-col gap-6 lg:flex-row lg:justify-between lg:items-end">
             <div className="relative flex items-end gap-4 sm:gap-6">
-              <img
+              {/* <img
                 src="/icons/skull-fire.png"
                 alt=""
                 className="w-16 sm:w-20 md:w-24 lg:w-28 h-auto opacity-80 mb-1 sm:mb-2 flex-shrink-0"
                 style={{ imageRendering: "pixelated" }}
-              />
-              <div>
+              /> */}
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div
+                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                  style={{
+                    background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)",
+                  }}
+                />
                 <h1
                   className="font-display text-[clamp(2.75rem,11vw,10rem)] leading-none tracking-tight uppercase text-smoke animate-flicker"
                   data-text="BOOKS"
                 >
                   BOOKS
                 </h1>
-                <div className="hazard-bar-sm w-full mt-2" />
               </div>
             </div>
 
@@ -74,18 +79,15 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-4 mt-4">
-            <img
-              src="/icons/crosshair.png"
-              alt=""
-              className="w-5 h-5 sm:w-6 sm:h-6 opacity-60 animate-pulse-hud flex-shrink-0"
-              style={{ imageRendering: "pixelated" }}
-            />
+          <div className="relative left-1/2 -translate-x-1/2 w-screen px-4 sm:px-6 md:px-10 lg:px-12 mt-4">
+            <div className="max-w-none flex items-center gap-2 sm:gap-4">
+            
             <div className="flex-1 h-[1px] bg-hud/20" />
             <span className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-hud/80">
               ACCESS <span className="text-smoke">PUBLIC</span>
             </span>
             <div className="flex-1 h-[1px] bg-hud/20" />
+            </div>
           </div>
         </div>
       </header>

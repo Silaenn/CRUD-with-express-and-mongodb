@@ -2,7 +2,7 @@ import BookSingleCard from "./BookSingleCard";
 import { Link } from "react-router-dom";
 
 const BooksCard = ({ books }) => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 border-l border-t border-hud/20">
+  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
     {books.length === 0 ? (
       <div className="col-span-full flex flex-col items-center justify-center py-24 gap-4">
         <img

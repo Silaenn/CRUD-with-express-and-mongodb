@@ -7,7 +7,7 @@ const BookSingleCard = ({ book, index }) => {
 
   return (
     <>
-      <div className="group relative border-b border-r border-hud/20 p-4 sm:p-6 min-h-[320px] sm:min-h-[340px] md:h-[360px] flex flex-col justify-between overflow-hidden transition-all duration-150 hover:border-hud/60 hover:bg-obsidian cursor-pointer"
+      <div className="group relative border border-hud/20 p-4 sm:p-6 min-h-[320px] sm:min-h-[340px] md:h-[360px] flex flex-col justify-between overflow-hidden transition-all duration-150 hover:border-hud/60 hover:bg-obsidian cursor-pointer"
         style={{ background: "rgba(10,10,15,0.8)" }}
       >
         {/* Corner brackets — visible on hover */}
