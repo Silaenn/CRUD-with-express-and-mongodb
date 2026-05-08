@@ -44,15 +44,32 @@ const DeleteBook = () => {
             className="mb-5"
           />
 
-          <div>
-            <div>
+          <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-3">
+            <div className="flex items-center gap-3 sm:gap-4">
+              {/* Hazard bar kiri (merah) — tampil hanya di lg ke atas */}
+              <div className="hidden lg:flex gap-1.5">
+                <div
+                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                  style={{ background: "repeating-linear-gradient(45deg, #FF2D2D 0px, #FF2D2D 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                />
+                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-danger/40" />
+              </div>
+
               <h1
-                className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase"
-                style={{ color: "#FF2D2D", textShadow: "0 0 30px rgba(255,45,45,0.4)" }}
+                className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase animate-flicker"
+                style={{ color: "#FF2D2D", textShadow: "0 0 40px rgba(255,45,45,0.4), 0 0 80px rgba(255,45,45,0.2)" }}
               >
                 DELETE
               </h1>
-              <div className="hazard-bar-red w-full mt-2" style={{ height: "3px" }} />
+
+              {/* Hazard bar kanan (merah) — tampil hanya di bawah lg */}
+              <div className="flex lg:hidden gap-1.5">
+                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-danger/40" />
+                <div
+                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                  style={{ background: "repeating-linear-gradient(45deg, #FF2D2D 0px, #FF2D2D 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                />
+              </div>
             </div>
           </div>
         </div>

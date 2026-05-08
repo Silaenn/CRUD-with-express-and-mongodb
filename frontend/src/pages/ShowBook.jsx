@@ -56,14 +56,33 @@ const ShowBook = () => {
             value={`LIBRARY DATABASE · RECORD ${id?.slice(-6).toUpperCase()}`}
             className="mb-5"
           />
-          <div className="flex flex-col gap-5 sm:flex-row sm:justify-between sm:items-end">
-            <div>
-              <h1 className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase text-smoke">
+          <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-3">
+            <div className="flex items-center gap-3 sm:gap-4">
+              {/* Hazard bar kiri — tampil hanya di lg ke atas */}
+              <div className="hidden lg:flex gap-1.5">
+                <div
+                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                  style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                />
+                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
+              </div>
+
+              <h1 className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase text-smoke animate-flicker"
+                style={{ textShadow: "0 0 40px rgba(255,184,0,0.4), 0 0 80px rgba(255,184,0,0.2)" }}>
                 DETAILS
               </h1>
-              <div className="hazard-bar-sm w-full mt-2" />
+
+              {/* Hazard bar kanan — tampil hanya di bawah lg */}
+              <div className="flex lg:hidden gap-1.5">
+                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
+                <div
+                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                  style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                />
+              </div>
             </div>
-            <div className="mb-1">
+            
+            <div className="mt-auto lg:ml-auto">
               <BackButton />
             </div>
           </div>
