@@ -18,17 +18,17 @@ export const InputField = ({
   min,
   max,
 }) => (
-  <div className="mb-10 relative">
+  <div className="mb-6 sm:mb-8 md:mb-10 relative">
     {/* Label */}
-    <label htmlFor={id} className="hud-label text-hud-dim mb-3 flex items-center gap-2">
-      <span className="w-1.5 h-1.5 bg-hud rotate-45 inline-block" />
+    <label htmlFor={id} className="hud-label text-hud-dim text-xs sm:text-sm mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
+      <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-hud rotate-45 inline-block flex-shrink-0" />
       {label}
     </label>
 
     {/* Input wrapper dengan corner brackets */}
     <div className="relative group">
-      <span className="absolute top-0 left-0 w-3 h-3 border-t border-l border-hud/30 group-focus-within:border-hud transition-colors duration-200" />
-      <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-hud/30 group-focus-within:border-hud transition-colors duration-200" />
+      <span className="absolute top-0 left-0 w-2 h-2 sm:w-3 sm:h-3 border-t border-l border-hud/30 group-focus-within:border-hud transition-colors duration-200" />
+      <span className="absolute bottom-0 right-0 w-2 h-2 sm:w-3 sm:h-3 border-b border-r border-hud/30 group-focus-within:border-hud transition-colors duration-200" />
 
       <input
         id={id}
@@ -40,7 +40,7 @@ export const InputField = ({
         min={min}
         max={max}
         required
-        className="input-hud px-4"
+        className="input-hud px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm"
       />
     </div>
 
@@ -134,10 +134,10 @@ const CreateBooks = () => {
             <Spinner />
           </div>
         ) : (
-          <form className="flex flex-col bg-void/90 px-4 py-2 sm:px-6" onSubmit={handleSaveBook}>
+          <form className="flex flex-col bg-void/90 px-2 sm:px-4 md:px-6 py-4 sm:py-6" onSubmit={handleSaveBook}>
             {/* Form section label */}
-            <div className="flex items-center gap-3 mb-8">
-              <span className="hud-tag">NEW_ENTRY</span>
+            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+              <span className="hud-tag text-xs sm:text-sm">NEW_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
               {/* Icon placeholder — diamond ornament */}
               {/* <img src="/icons/diamond-ornament.png" className="w-4 h-4 opacity-50" /> */}
@@ -157,17 +157,17 @@ const CreateBooks = () => {
             />
 
             {/* Divider dengan chevron */}
-            <div className="flex items-center gap-3 my-6">
+            <div className="flex items-center gap-2 sm:gap-3 my-4 sm:my-6">
               <img
                 src="/icons/chevron-yellow.png"
                 alt=""
-                className="w-8 h-auto opacity-50"
+                className="w-6 sm:w-8 h-auto opacity-50"
                 style={{ imageRendering: "pixelated" }}
               />
               <div className="flex-1 h-[1px] bg-border" />
             </div>
 
-             <button type="submit" className="btn-hud w-fit">
+             <button type="submit" className="btn-hud w-fit text-xs sm:text-sm">
                [+] SAVE_ENTRY
              </button>
           </form>

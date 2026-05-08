@@ -114,9 +114,9 @@ const EditBook = () => {
             <Spinner />
           </div>
         ) : (
-          <form className="flex flex-col bg-void/90 px-4 py-2 sm:px-6" onSubmit={handleEditBook}>
-            <div className="flex items-center gap-3 mb-8">
-              <span className="hud-tag">MODIFY_ENTRY</span>
+          <form className="flex flex-col bg-void/90 px-2 sm:px-4 md:px-6 py-4 sm:py-6" onSubmit={handleEditBook}>
+            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+              <span className="hud-tag text-xs sm:text-sm">MODIFY_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
             </div>
 
@@ -132,12 +132,12 @@ const EditBook = () => {
               max={currentYear}
             />
 
-            <div className="flex items-center gap-3 my-6">
-              <div className="w-2 h-2 bg-hud rotate-45" />
+            <div className="flex items-center gap-2 sm:gap-3 my-4 sm:my-6">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-hud rotate-45" />
               <div className="flex-1 h-[1px] bg-border" />
             </div>
 
-            <button type="submit" className="btn-hud w-fit">
+            <button type="submit" className="btn-hud w-fit text-xs sm:text-sm">
               [*] UPDATE_ENTRY
             </button>
           </form>
