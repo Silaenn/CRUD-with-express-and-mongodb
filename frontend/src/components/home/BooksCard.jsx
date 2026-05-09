@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import BookSingleCard from "./BookSingleCard";
 import { Link } from "react-router-dom";
 
@@ -32,5 +33,17 @@ const BooksCard = ({ books, onDelete }) => (
     )}
   </div>
 );
+
+BooksCard.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      publishYear: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    })
+  ).isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default BooksCard;
