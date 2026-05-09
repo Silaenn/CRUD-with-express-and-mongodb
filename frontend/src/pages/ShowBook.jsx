@@ -35,12 +35,12 @@ const ShowBook = () => {
   const InfoRow = ({ label, value }) => (
     <div className="group py-6 sm:py-8 border-b border-hud/10 hover:border-hud/30 flex flex-col md:flex-row md:items-baseline gap-2 sm:gap-3 md:gap-10 transition-colors duration-150">
       {/* Label */}
-      <span className="hud-label text-muted md:w-36 lg:w-40 flex items-center gap-2">
+      <span className="hud-label text-hud-dim text-sm sm:text-base md:w-36 lg:w-40 flex items-center gap-2">
         <span className="w-1 h-1 bg-hud rotate-45 inline-block opacity-50 group-hover:opacity-100 transition-opacity" />
         {label}
       </span>
       {/* Value */}
-      <span className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-smoke tracking-[0.02em] group-hover:text-hud transition-colors duration-150 break-words">
+      <span className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-smoke tracking-[0.02em] group-hover:text-hud transition-colors duration-150 break-words">
         {value}
       </span>
     </div>
@@ -110,10 +110,9 @@ const ShowBook = () => {
             <InfoRow label="YEAR"   value={book.publishYear} />
 
             {/* Divider */}
-            <div className="flex items-center gap-3 my-6">
-              <div className="w-2 h-2 border border-hud/40 rotate-45" />
-              <div className="flex-1 h-[1px] bg-border" />
-              <div className="w-2 h-2 border border-danger/40 rotate-45" />
+            <div className="flex items-center gap-3 my-8 sm:my-10">
+              <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
+              <div className="flex-1 h-[1px] bg-hud/20" />
             </div>
 
             {/* Metadata */}
