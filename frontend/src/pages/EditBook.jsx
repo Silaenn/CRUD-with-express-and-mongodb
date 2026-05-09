@@ -118,7 +118,7 @@ const EditBook = () => {
         ) : (
           <form className="flex flex-col bg-void/90 px-2 sm:px-4 md:px-6 py-4 sm:py-6" onSubmit={handleEditBook}>
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <span className="hud-tag text-xs sm:text-sm">MODIFY_ENTRY</span>
+              <span className="hud-tag text-sm sm:text-base">MODIFY_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
             </div>
 
@@ -138,7 +138,7 @@ const EditBook = () => {
               <div className="flex-1 h-[1px] bg-border" />
             </div>
 
-            <button type="submit" className="btn-hud w-fit text-xs sm:text-sm">
+            <button type="submit" className="btn-hud w-fit text-sm sm:text-base">
               [*] UPDATE_ENTRY
             </button>
           </form>

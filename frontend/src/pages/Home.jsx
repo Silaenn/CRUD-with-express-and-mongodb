@@ -122,7 +122,7 @@ const Home = () => {
       </main>
 
       {/* Footer HUD bar */}
-      <div className="fixed bottom-0 left-0 right-0 h-[3px] hazard-bar pointer-events-none opacity-40" />
+      {/* <div className="fixed bottom-0 left-0 right-0 h-[3px] hazard-bar pointer-events-none opacity-40" /> */}
     </div>
   );
 };

@@ -20,7 +20,7 @@ export const InputField = ({
 }) => (
   <div className="mb-6 sm:mb-8 md:mb-10 relative">
     {/* Label */}
-    <label htmlFor={id} className="hud-label text-hud-dim text-xs sm:text-sm mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
+    <label htmlFor={id} className="hud-label text-hud-dim text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
       <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-hud rotate-45 inline-block flex-shrink-0" />
       {label}
     </label>
@@ -40,7 +40,7 @@ export const InputField = ({
         min={min}
         max={max}
         required
-        className="input-hud px-2 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm"
+        className="input-hud px-2 sm:px-4 py-2 sm:py-3 text-sm sm:text-base"
       />
     </div>
 
@@ -137,7 +137,7 @@ const CreateBooks = () => {
           <form className="flex flex-col bg-void/90 px-2 sm:px-4 md:px-6 py-4 sm:py-6" onSubmit={handleSaveBook}>
             {/* Form section label */}
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <span className="hud-tag text-xs sm:text-sm">NEW_ENTRY</span>
+              <span className="hud-tag text-sm sm:text-base">NEW_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
               {/* Icon placeholder — diamond ornament */}
               {/* <img src="/icons/diamond-ornament.png" className="w-4 h-4 opacity-50" /> */}
@@ -165,7 +165,7 @@ const CreateBooks = () => {
               <div className="flex-1 h-[1px] bg-border" />
             </div>
 
-             <button type="submit" className="btn-hud w-fit text-xs sm:text-sm">
+             <button type="submit" className="btn-hud w-fit text-sm sm:text-base">
                [+] SAVE_ENTRY
              </button>
           </form>
