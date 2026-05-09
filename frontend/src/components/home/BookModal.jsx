@@ -114,9 +114,8 @@ const BookModal = ({ book, onClose }) => {
 
           {/* Divider with diamond */}
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex-1 h-[1px] bg-border" />
-            <div className="w-2 h-2 bg-danger rotate-45" />
-            <div className="flex-1 h-[1px] bg-border" />
+            <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
+            <div className="flex-1 h-[1px] bg-hud/20" />
           </div>
 
           {/* Description */}
