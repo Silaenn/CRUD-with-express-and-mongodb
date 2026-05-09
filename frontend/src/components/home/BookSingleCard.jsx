@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import BookModal from "./BookModal";
+import DeleteBookModal from "./DeleteBookModal";
 
-const BookSingleCard = ({ book, index }) => {
+const BookSingleCard = ({ book, index, onDelete }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return (
     <>
@@ -74,16 +76,26 @@ const BookSingleCard = ({ book, index }) => {
           >
             [EDIT]
           </Link>
-          <Link
-            to={`/books/delete/${book._id}`}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setShowDeleteModal(true);
+            }}
             className="font-mono text-hud-xs uppercase tracking-widest text-danger border-b border-danger/50 hover:border-danger pb-0.5 transition-colors duration-100 hover:text-glow-danger focus-visible:outline-none focus-visible:border-danger"
           >
             [DELETE]
-          </Link>
+          </button>
         </div>
       </div>
 
       {showModal && <BookModal book={book} onClose={() => setShowModal(false)} />}
+      {showDeleteModal && (
+        <DeleteBookModal
+          book={book}
+          onClose={() => setShowDeleteModal(false)}
+          onDelete={onDelete}
+        />
+      )}
     </>
   );
 };

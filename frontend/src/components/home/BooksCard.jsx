@@ -1,7 +1,7 @@
 import BookSingleCard from "./BookSingleCard";
 import { Link } from "react-router-dom";
 
-const BooksCard = ({ books }) => (
+const BooksCard = ({ books, onDelete }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
     {books.length === 0 ? (
       <div className="col-span-full flex flex-col items-center justify-center py-24 gap-4">
@@ -27,7 +27,7 @@ const BooksCard = ({ books }) => (
       </div>
     ) : (
       books.map((item, index) => (
-        <BookSingleCard key={item._id} book={item} index={index} />
+        <BookSingleCard key={item._id} book={item} index={index} onDelete={onDelete} />
       ))
     )}
   </div>

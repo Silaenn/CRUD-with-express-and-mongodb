@@ -117,7 +117,7 @@ const Home = () => {
             </div>
           </div>
         ) : (
-          <BooksCard books={books} />
+          <BooksCard books={books} onDelete={fetchBooks} />
         )}
       </main>
 
