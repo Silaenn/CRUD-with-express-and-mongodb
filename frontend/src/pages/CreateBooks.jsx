@@ -91,37 +91,39 @@ const CreateBooks = () => {
       {/* Header */}
       <header className="relative border-b border-hud/30 overflow-hidden">
         <div className="lg:max-w-5xl md:max-w-4xl sm:max-w-3xl max-w-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
-          <MetaChip label="SYSTEM" value="LIBRARY DATABASE · CREATE NEW" className="mb-5" />
-          <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-3">
-            <div className="flex items-center gap-3 sm:gap-4">
-              {/* Hazard bar kiri — tampil hanya di lg ke atas */}
-              <div className="hidden lg:flex gap-1.5">
-                <div
-                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
-                  style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
-                />
-                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
-              </div>
+          <div className="lg:max-w-4xl md:max-w-3xl sm:max-w-2xl max-w-xl mx-auto">
+            <MetaChip label="SYSTEM" value="LIBRARY DATABASE · CREATE NEW" className="mb-5" />
+            <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-3">
+              <div className="flex items-center gap-3 sm:gap-4">
+                {/* Hazard bar kiri — tampil hanya di lg ke atas */}
+                <div className="hidden lg:flex gap-1.5">
+                  <div
+                    className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                    style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                  />
+                  <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
+                </div>
 
-              <h1
-                className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase text-smoke animate-flicker"
-                style={{ textShadow: "0 0 40px rgba(255,184,0,0.4), 0 0 80px rgba(255,184,0,0.2)" }}
-              >
-                CREATE
-              </h1>
+                <h1
+                  className="font-display text-[clamp(2.4rem,10vw,6rem)] leading-none tracking-tight uppercase text-smoke animate-flicker"
+                  style={{ textShadow: "0 0 40px rgba(255,184,0,0.4), 0 0 80px rgba(255,184,0,0.2)" }}
+                >
+                  CREATE
+                </h1>
 
-              {/* Hazard bar kanan — tampil hanya di bawah lg */}
-              <div className="flex lg:hidden gap-1.5">
-                <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
-                <div
-                  className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
-                  style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
-                />
+                {/* Hazard bar kanan — tampil hanya di bawah lg */}
+                <div className="flex lg:hidden gap-1.5">
+                  <div className="w-[3px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0 bg-hud/40" />
+                  <div
+                    className="w-[7px] h-16 sm:h-20 md:h-24 lg:h-28 flex-shrink-0"
+                    style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
+                  />
+                </div>
               </div>
-            </div>
-            
-            <div className="mt-auto lg:ml-auto">
-              <BackButton />
+              
+              <div className="mt-auto lg:ml-auto">
+                <BackButton />
+              </div>
             </div>
           </div>
         </div>
@@ -134,7 +136,7 @@ const CreateBooks = () => {
             <Spinner />
           </div>
         ) : (
-          <form className="lg:max-w-4xl md:max-w-3xl sm:max-w-2xl max-w-xl flex flex-col bg-void/90 py-4 sm:py-6" onSubmit={handleSaveBook}>
+          <form className="lg:max-w-4xl md:max-w-3xl sm:max-w-2xl max-w-xl mx-auto flex flex-col bg-void/90 py-4 sm:py-6" onSubmit={handleSaveBook}>
             {/* Form section label */}
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="hud-tag text-sm sm:text-base">NEW_ENTRY</span>
