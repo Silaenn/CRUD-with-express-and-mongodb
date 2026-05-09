@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import BookModal from "./BookModal";
 import DeleteBookModal from "./DeleteBookModal";
@@ -98,6 +99,17 @@ const BookSingleCard = ({ book, index, onDelete }) => {
       )}
     </>
   );
+};
+
+BookSingleCard.propTypes = {
+  book: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    publishYear: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default BookSingleCard;

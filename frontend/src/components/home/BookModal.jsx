@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { AiOutlineClose } from "react-icons/ai";
 import { PiBookOpenTextLight, PiCalendarBlank, PiUserFocus } from "react-icons/pi";
 import { BiInfoCircle } from "react-icons/bi";
@@ -84,7 +85,7 @@ const BookModal = ({ book, onClose }) => {
                 <img src="/icons/tribal-flame.png" alt="" className="w-10 h-8 opacity-80" />
               </div>
               <div>
-                <span className="hud-label text-[0.6rem] block text-hud/70 mb-0.5">DATA_STREAM :: ACCESSED</span>
+                <span className="hud-label text-[0.6rem] block text-hud/80 mb-0.5">DATA_STREAM :: ACCESSED</span>
                 <h1 className="font-display text-xl text-smoke tracking-wider uppercase" id="book-modal-title">RECORD_VIEW</h1>
               </div>
             </div>
@@ -192,6 +193,16 @@ const BookModal = ({ book, onClose }) => {
       </div>
     </div>
   );
+};
+
+BookModal.propTypes = {
+  book: PropTypes.shape({
+    _id: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    publishYear: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default BookModal;

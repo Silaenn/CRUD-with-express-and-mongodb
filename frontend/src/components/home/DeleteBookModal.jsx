@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { useSnackbar } from "notistack";
 import { API_URL } from "../../config";
 
@@ -76,7 +77,7 @@ const DeleteBookModal = ({ book, onClose, onDelete }) => {
           </div>
 
           <p className="font-mono text-xs text-muted/70 tracking-wider mb-8 uppercase leading-relaxed">
-            // THIS ACTION IS IRREVERSIBLE. ALL DATA ASSOCIATED WITH THIS RECORD WILL BE PERMANENTLY ERASED FROM THE ARCHIVES.
+            THIS ACTION IS IRREVERSIBLE. ALL DATA ASSOCIATED WITH THIS RECORD WILL BE PERMANENTLY ERASED FROM THE ARCHIVES.
           </p>
 
           {/* Actions */}
@@ -100,6 +101,15 @@ const DeleteBookModal = ({ book, onClose, onDelete }) => {
       </div>
     </div>
   );
+};
+
+DeleteBookModal.propTypes = {
+  book: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
 };
 
 export default DeleteBookModal;
