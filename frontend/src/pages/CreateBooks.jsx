@@ -139,8 +139,8 @@ const CreateBooks = () => {
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="hud-tag text-sm sm:text-base">NEW_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
-              {/* Icon placeholder — diamond ornament */}
-              {/* <img src="/icons/diamond-ornament.png" className="w-4 h-4 opacity-50" /> */}
+              <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
+
             </div>
 
             <InputField id="title" label="Title" value={title} onChange={setTitle} placeholder="ENTER_TITLE..." />
@@ -155,14 +155,9 @@ const CreateBooks = () => {
             />
 
             {/* Divider dengan chevron */}
-            <div className="flex items-center gap-2 sm:gap-3 my-4 sm:my-6">
-              <img
-                src="/icons/chevron-yellow.png"
-                alt=""
-                className="w-14 -ml-5 h-auto opacity-50"
-                style={{ imageRendering: "pixelated" }}
-              />
-            <div className="-ml-6 flex-1 h-[1px] bg-hud/20" />
+            <div className="flex items-center gap-3 my-8 sm:my-10">
+              <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
+              <div className="flex-1 h-[1px] bg-hud/20" />
             </div>
 
              <button type="submit" className="btn-hud w-fit text-sm sm:text-base">

@@ -120,6 +120,7 @@ const EditBook = () => {
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="hud-tag text-sm sm:text-base">MODIFY_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
+              <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
             </div>
 
             <InputField id="title" label="Title" value={title} onChange={setTitle} />
@@ -133,9 +134,9 @@ const EditBook = () => {
               type="date"
             />
 
-            <div className="flex items-center gap-2 sm:gap-3 my-4 sm:my-6">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-hud rotate-45" />
-              <div className="flex-1 h-[1px] bg-border" />
+            <div className="flex items-center gap-3 my-8 sm:my-10">
+              <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
+              <div className="flex-1 h-[1px] bg-hud/20" />
             </div>
 
             <button type="submit" className="btn-hud w-fit text-sm sm:text-base">
