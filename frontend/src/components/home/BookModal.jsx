@@ -68,8 +68,8 @@ const BookModal = ({ book, onClose }) => {
         <div className="flex items-center justify-between px-6 py-3 border-b border-border">
           <div className="flex items-center gap-3">
             {/* Icon placeholder — swap dengan icon hasil generate */}
-            <img src="/icons/diamond-ornament.png" alt="" className="w-4 h-4 opacity-70" />
-            <span className="hud-label text-hud" id="book-modal-title">RECORD_VIEW</span>
+            <img src="/icons/tribal-flame.png" alt="" className="w-8 h-8 opacity-70" />
+            <span className="hud-label text-hud -ml-1.5" id="book-modal-title">RECORD_VIEW</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-4">
             <span className="inline-flex items-center rounded-sm border border-hud/40 bg-hud/10 px-2.5 py-1 font-mono text-[0.68rem] tracking-[0.12em] text-hud">
@@ -93,7 +93,7 @@ const BookModal = ({ book, onClose }) => {
             <span className="hud-tag">{book.publishYear}</span>
             {/* Decorative line */}
             <div className="flex-1 h-[1px] bg-hud/20" />
-            <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm" />
+            <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
           </div>
 
           {/* Title */}
