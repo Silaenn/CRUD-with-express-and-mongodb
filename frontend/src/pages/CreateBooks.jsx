@@ -159,10 +159,10 @@ const CreateBooks = () => {
               <img
                 src="/icons/chevron-yellow.png"
                 alt=""
-                className="w-6 sm:w-8 h-auto opacity-50"
+                className="w-14 -ml-5 h-auto opacity-50"
                 style={{ imageRendering: "pixelated" }}
               />
-              <div className="flex-1 h-[1px] bg-border" />
+            <div className="-ml-6 flex-1 h-[1px] bg-hud/20" />
             </div>
 
              <button type="submit" className="btn-hud w-fit text-sm sm:text-base">
