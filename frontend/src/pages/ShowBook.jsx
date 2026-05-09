@@ -50,7 +50,7 @@ const ShowBook = () => {
     <div className="min-h-screen bg-void">
       {/* Header */}
       <header className="relative border-b border-hud/30 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
+        <div className="lg:max-w-5xl md:max-w-4xl sm:max-w-3xl max-w-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
           <MetaChip
             label="SYSTEM"
             value={`LIBRARY DATABASE · RECORD ${id?.slice(-6).toUpperCase()}`}
@@ -90,13 +90,13 @@ const ShowBook = () => {
       </header>
 
       {/* Main */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8">
+      <main className="lg:max-w-5xl md:max-w-4xl sm:max-w-3xl max-w-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8">
         {loading ? (
           <div className="flex items-center justify-center min-h-[60vh]">
             <Spinner />
           </div>
         ) : (
-          <div className="max-w-4xl">
+          <div className="lg:max-w-4xl md:max-w-3xl sm:max-w-2xl max-w-xl">
             {/* Record badge */}
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="hud-tag text-sm sm:text-base">RECORD_DATA</span>

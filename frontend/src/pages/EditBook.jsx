@@ -70,7 +70,7 @@ const EditBook = () => {
     <div className="min-h-screen bg-void">
       {/* Header */}
       <header className="relative border-b border-hud/30 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
+        <div className="lg:max-w-5xl md:max-w-4xl sm:max-w-3xl max-w-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
           <MetaChip
             label="SYSTEM"
             value={`LIBRARY DATABASE · EDIT ${id?.slice(-6).toUpperCase()}`}
@@ -110,13 +110,13 @@ const EditBook = () => {
       </header>
 
       {/* Main */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-8 sm:py-10">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 py-6 sm:py-8">
         {loading ? (
           <div className="flex items-center justify-center min-h-[60vh]">
             <Spinner />
           </div>
         ) : (
-          <form className="flex flex-col bg-void/90 px-2 sm:px-4 md:px-6 py-4 sm:py-6" onSubmit={handleEditBook}>
+          <form className="max-w-4xl flex flex-col bg-void/90 py-4 sm:py-6" onSubmit={handleEditBook}>
             <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
               <span className="hud-tag text-sm sm:text-base">MODIFY_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
@@ -150,3 +150,4 @@ const EditBook = () => {
 };
 
 export default EditBook;
+
