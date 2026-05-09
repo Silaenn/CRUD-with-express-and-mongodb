@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const BackButton = ({ destination = "/", label = "BACK_TO_DASHBOARD" }) => (
@@ -18,5 +19,10 @@ const BackButton = ({ destination = "/", label = "BACK_TO_DASHBOARD" }) => (
     </span>
   </Link>
 );
+
+BackButton.propTypes = {
+  destination: PropTypes.string,
+  label: PropTypes.string,
+};
 
 export default BackButton;

@@ -1,10 +1,30 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import MetaChip from "../components/ui/MetaChip";
 import { API_URL } from "../config";
+
+const InfoRow = ({ label, value }) => (
+  <div className="group py-6 sm:py-8 border-b border-hud/10 hover:border-hud/30 flex flex-col md:flex-row md:items-baseline gap-2 sm:gap-3 md:gap-10 transition-colors duration-150">
+    {/* Label */}
+    <span className="hud-label text-hud-dim text-sm sm:text-base md:w-36 lg:w-40 flex items-center gap-2">
+      <span className="w-1 h-1 bg-hud rotate-45 inline-block opacity-50 group-hover:opacity-100 transition-opacity" />
+      {label}
+    </span>
+    {/* Value */}
+    <span className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-smoke tracking-[0.02em] group-hover:text-hud transition-colors duration-150 break-words">
+      {value}
+    </span>
+  </div>
+);
+
+InfoRow.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.node,
+};
 
 const ShowBook = () => {
   const [book, setBook] = useState({});
@@ -31,20 +51,6 @@ const ShowBook = () => {
     if (Number.isNaN(date.getTime())) return "-";
     return date.toLocaleString();
   };
-
-  const InfoRow = ({ label, value }) => (
-    <div className="group py-6 sm:py-8 border-b border-hud/10 hover:border-hud/30 flex flex-col md:flex-row md:items-baseline gap-2 sm:gap-3 md:gap-10 transition-colors duration-150">
-      {/* Label */}
-      <span className="hud-label text-hud-dim text-sm sm:text-base md:w-36 lg:w-40 flex items-center gap-2">
-        <span className="w-1 h-1 bg-hud rotate-45 inline-block opacity-50 group-hover:opacity-100 transition-opacity" />
-        {label}
-      </span>
-      {/* Value */}
-      <span className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-smoke tracking-[0.02em] group-hover:text-hud transition-colors duration-150 break-words">
-        {value}
-      </span>
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-void">

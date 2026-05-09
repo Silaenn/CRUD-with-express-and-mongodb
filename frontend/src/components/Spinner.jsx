@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Spinner = ({ variant = "hud" }) => {
   const c = variant === "danger" ? {
     bracket:  "border-danger",
@@ -47,6 +49,10 @@ const Spinner = ({ variant = "hud" }) => {
       `}</style>
     </div>
   );
+};
+
+Spinner.propTypes = {
+  variant: PropTypes.oneOf(["hud", "danger"]),
 };
 
 export default Spinner;

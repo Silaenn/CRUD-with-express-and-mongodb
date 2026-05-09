@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const MetaChip = ({ label, value, variant = "hud", className = "" }) => {
   const variants = {
     hud: {
@@ -22,6 +24,13 @@ const MetaChip = ({ label, value, variant = "hud", className = "" }) => {
       <span className={`break-all normal-case tracking-[0.02em] ${activeVariant.value}`}>{value}</span>
     </div>
   );
+};
+
+MetaChip.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.node.isRequired,
+  variant: PropTypes.oneOf(["hud", "danger"]),
+  className: PropTypes.string,
 };
 
 export default MetaChip;

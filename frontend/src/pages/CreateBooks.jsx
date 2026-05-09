@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 import axios from "axios";
@@ -46,6 +47,17 @@ export const InputField = ({
 
   </div>
 );
+
+InputField.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
+  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+};
 
 const CreateBooks = () => {
   const [title, setTitle] = useState("");
@@ -173,4 +185,3 @@ const CreateBooks = () => {
 };
 
 export default CreateBooks;
-
