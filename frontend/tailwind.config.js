@@ -66,6 +66,7 @@ export default {
         "glitch":     "glitch 3s infinite",
         "flicker":    "flicker 4s infinite",
         "scanline":   "scanline 8s linear infinite",
+        "scanline-v": "scanlineV 4s linear infinite",
         "pulse-hud":  "pulseHud 2s ease-in-out infinite",
         "blink":      "blink 1s step-end infinite",
         "slide-in":   "slideIn 0.2s ease-out",
@@ -88,6 +89,10 @@ export default {
         scanline: {
           "0%":   { backgroundPosition: "0 0" },
           "100%": { backgroundPosition: "0 100%" },
+        },
+        scanlineV: {
+          "0%":   { top: "-10%" },
+          "100%": { top: "110%" },
         },
         pulseHud: {
           "0%, 100%": { boxShadow: "0 0 4px #FFB800, 0 0 10px rgba(255,184,0,0.2)" },
