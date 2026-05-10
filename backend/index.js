@@ -53,6 +53,9 @@ app.use(async (req, res, next) => {
   }
 });
 
+// Handle preflight requests untuk semua routes
+app.options("*", cors(corsOptions));
+
 app.use("/books", booksRoute);
 
 app.get("/", (req, res) => {
