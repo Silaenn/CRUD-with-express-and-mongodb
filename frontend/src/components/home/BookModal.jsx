@@ -158,7 +158,7 @@ const BookModal = ({ book, onClose }) => {
                 <PiBookOpenTextLight className="text-hud text-lg" />
                 <span className="hud-label text-[0.65rem] text-hud/50">ENTRY_SUBJECT</span>
               </div>
-              <h2 className="font-display text-2xl sm:text-3xl text-smoke leading-none uppercase tracking-tight group-hover:text-hud transition-colors duration-300">
+              <h2 className="font-display text-2xl sm:text-3xl text-smoke leading-tight uppercase tracking-tight group-hover:text-hud transition-colors duration-300 break-words">
                 {book.title}
               </h2>
             </motion.div>

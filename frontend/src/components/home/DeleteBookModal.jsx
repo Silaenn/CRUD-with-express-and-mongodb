@@ -106,7 +106,7 @@ const DeleteBookModal = ({ book, onClose, onDelete }) => {
           
           <motion.div variants={itemVariants} className="bg-danger/5 border border-danger/20 p-4 mb-6 w-full text-left">
              <p className="font-mono text-sm text-center text-danger/80 mb-1 tracking-wider uppercase">Record to be purged:</p>
-             <p className="font-display text-xl text-center text-smoke uppercase">{book.title}</p>
+             <p className="font-display text-xl text-center text-smoke uppercase break-words">{book.title}</p>
           </motion.div>
 
           <motion.p variants={itemVariants} className="font-mono text-xs text-muted/70 tracking-wider mb-8 uppercase leading-relaxed">
