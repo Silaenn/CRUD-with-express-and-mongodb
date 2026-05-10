@@ -8,17 +8,14 @@ import cors from "cors";
 const app = express();
 const corsOrigins = process.env.CORS_ORIGIN;
 
-app.use(
-  cors(
-    corsOrigins
-      ? {
-          origin: corsOrigins,
-          methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-          allowedHeaders: ["Content-Type"],
-        }
-      : undefined
-  )
-);
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
+
+app.options("*", cors());
+
 app.use(express.json());
 
 let isConnected = false;
