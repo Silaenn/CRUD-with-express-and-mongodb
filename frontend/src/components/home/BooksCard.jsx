@@ -4,22 +4,24 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const BooksCard = ({ books, onDelete }) => {
-  const containerVariants = {
+  // Animasi difokuskan hanya pada opacity agar tidak merusak layout/ukuran
+  const gridVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        duration: 0.4,
+        ease: "easeOut"
       },
     },
   };
 
   return (
     <motion.div 
-      className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"
+      className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
+      variants={gridVariants}
     >
       {books.length === 0 ? (
         <motion.div 
