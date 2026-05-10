@@ -47,7 +47,9 @@ const Home = () => {
     axios
       .get(`${API_URL}/books`)
       .then((response) => {
-        setBooks(response.data.data);
+        // Cek apakah response.data.data ada, jika tidak cek apakah response.data itu sendiri adalah array
+        const fetchedBooks = response.data.data || (Array.isArray(response.data) ? response.data : []);
+        setBooks(fetchedBooks);
         setLoading(false);
       })
       .catch((error) => {
@@ -120,7 +122,7 @@ const Home = () => {
               className="mb-1 flex items-stretch gap-3 self-start lg:self-auto lg:justify-end"
               variants={itemVariants}
             >
-              <MetaChip label="RECORDS" value={`${books.length} FOUND`} className="h-12" />
+              <MetaChip label="RECORDS" value={`${books?.length || 0} FOUND`} className="h-12" />
               <Link to="/books/create" className="btn-hud h-12 inline-flex items-center">
                 [+] ADD_ENTRY
               </Link>
