@@ -153,7 +153,7 @@ const Home = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="flex justify-center items-center min-h-[40vh]"
+              className="flex justify-center items-center min-h-[60vh]"
             >
               <Spinner />
             </motion.div>
