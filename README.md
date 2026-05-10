@@ -42,7 +42,7 @@ A high-performance Book Management System built with the **MERN Stack**, featuri
 │   │   ├── components/  # Reusable UI & HUD elements
 │   │   ├── pages/       # Main screen modules
 │   │   └── App.jsx      # Routing & Global Layout
-└── docs/             # Specs and design plans
+└── docs/             # Supporting project docs
 ```
 
 ## ⚙️ Installation & Setup
@@ -59,7 +59,9 @@ cd CRUD-with-express-and-mongodb
 ```bash
 cd backend
 npm install
-# Create a .env file and add your MONGODB_URL & PORT
+# Create a .env file:
+# MONGODB_URI=your_mongodb_connection_string
+# PORT=3000
 npm start
 ```
 
@@ -68,12 +70,14 @@ npm start
 ```bash
 cd frontend
 npm install
+# Create a .env file:
+# VITE_API_URL=http://localhost:3000
 npm run dev
 ```
 
 ## 🛡️ License
 
-This project is open-source and available under the [MIT License](LICENSE).
+No root `LICENSE` file is included in this repository yet.
 
 ---
 
