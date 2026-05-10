@@ -56,16 +56,16 @@ const BookModal = ({ book, onClose }) => {
         aria-labelledby="book-modal-title"
         ref={modalRef}
       >
-        {/* Scanning Line Animation — Moved to top layer (z-50) */}
-        <div className="absolute inset-0 pointer-events-none z-50 overflow-hidden">
-          <div className="absolute left-0 w-full h-[2px] bg-hud shadow-[0_0_20px_#FFB800] opacity-100 animate-scanline-v" />
+        {/* Scanning Line Animation — Behind content (z-0) */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute left-0 w-full h-[2px] bg-hud/40 shadow-[0_0_20px_#FFB800] opacity-100 animate-scanline-v" />
         </div>
 
         {/* Decorative Watermark */}
         <img 
           src="/icons/tribal-flame.png" 
           alt="" 
-          className="absolute bottom-72 -right-0 w-48 opacity-[0.08] pointer-events-none grayscale" 
+          className="absolute bottom-72 -right-0 w-40 opacity-[0.08] pointer-events-none grayscale" 
         />
 
         {/* Corner brackets */}
