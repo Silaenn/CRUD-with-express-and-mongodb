@@ -163,7 +163,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              className="flex-1 flex flex-col items-center justify-center px-4 min-h-[40vh]"
+              className="flex-1 flex flex-col items-center justify-center px-4 min-h-[60vh]"
             >
               <div className="lg:max-w-2xl md:max-w-xl sm:max-w-lg max-w-md w-full border border-danger/30 bg-obsidian p-8 sm:p-10 relative text-center">
                 {/* Minimalist HUD Accents */}
