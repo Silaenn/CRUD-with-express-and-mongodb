@@ -2,7 +2,8 @@
 
 A high-performance Book Management System built with the **MERN Stack**, featuring a futuristic **Cyberpunk HUD (Heads-Up Display)** interface and immersive animations.
 
-![Preview](https://github.com/Silaenn/CRUD-with-express-and-mongodb/assets/131638765/807df937-099e-43c9-8376-a03cf32ba0ab)
+<img width="1920" height="964" alt="Books-HUD-CRUD-Library" src="https://github.com/user-attachments/assets/8cbdde22-26ee-4f0a-b43a-82d0b6b3f837" />
+<br>
 
 ## 🚀 Key Features
 
