@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import BookModal from "./BookModal";
 import DeleteBookModal from "./DeleteBookModal";
+import { AnimatePresence } from "framer-motion";
 
 const BookSingleCard = ({ book, index, onDelete }) => {
   const [showModal, setShowModal] = useState(false);
@@ -14,6 +15,7 @@ const BookSingleCard = ({ book, index, onDelete }) => {
         className="group relative border border-hud/20 p-4 sm:p-6 min-h-[320px] sm:min-h-[340px] md:h-[360px] flex flex-col justify-between overflow-hidden transition-all duration-150 hover:border-hud/60 hover:bg-obsidian cursor-pointer"
         style={{ background: "rgba(10,10,15,0.8)" }}
       >
+        {/* ... (rest of the card content) ... */}
         {/* Corner brackets — visible on hover */}
         <span className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-hud/0 group-hover:border-hud transition-all duration-150" />
         <span className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-hud/0 group-hover:border-hud transition-all duration-150" />
@@ -90,17 +92,21 @@ const BookSingleCard = ({ book, index, onDelete }) => {
         </div>
       </div>
 
-      {showModal && <BookModal book={book} onClose={() => setShowModal(false)} />}
-      {showDeleteModal && (
-        <DeleteBookModal
-          book={book}
-          onClose={() => setShowDeleteModal(false)}
-          onDelete={onDelete}
-        />
-      )}
+      <AnimatePresence>
+        {showModal && <BookModal key="modal" book={book} onClose={() => setShowModal(false)} />}
+        {showDeleteModal && (
+          <DeleteBookModal
+            key="delete-modal"
+            book={book}
+            onClose={() => setShowDeleteModal(false)}
+            onDelete={onDelete}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };
+
 
 BookSingleCard.propTypes = {
   book: PropTypes.shape({
