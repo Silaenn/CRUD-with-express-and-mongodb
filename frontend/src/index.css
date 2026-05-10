@@ -228,8 +228,8 @@
   .btn-hud {
     @apply relative font-mono text-hud-sm uppercase tracking-widest;
     @apply border border-hud text-hud bg-transparent;
-    @apply px-6 py-3 transition-all duration-100;
-    @apply hover:bg-hud hover:text-void hover:shadow-hud;
+    @apply px-6 py-3;
+    @apply hover:bg-hud hover:text-void hover:shadow-hud transition-colors duration-200;
     @apply active:scale-[0.98];
   }
 
@@ -258,8 +258,8 @@
   .btn-danger-hud {
     @apply relative font-mono text-hud-sm uppercase tracking-widest;
     @apply border border-danger text-danger bg-transparent;
-    @apply px-6 py-3 transition-all duration-100;
-    @apply hover:bg-danger hover:text-void hover:shadow-danger;
+    @apply px-6 py-3;
+    @apply hover:bg-danger hover:text-void hover:shadow-danger transition-colors duration-200;
     @apply active:scale-[0.98];
   }
 

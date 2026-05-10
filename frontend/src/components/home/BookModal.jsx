@@ -97,7 +97,7 @@ const BookModal = ({ book, onClose }) => {
         <img 
           src="/icons/tribal-flame.png" 
           alt="" 
-          className="absolute bottom-72 -right-0 w-40 opacity-[0.08] pointer-events-none grayscale" 
+          className="absolute bottom-72 -right-0 w-20 opacity-[0.08] pointer-events-none grayscale" 
         />
 
         {/* Corner brackets */}
