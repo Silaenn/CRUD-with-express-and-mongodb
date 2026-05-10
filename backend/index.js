@@ -10,7 +10,7 @@ const app = express();
 // Configure CORS with explicit allowed origins
 const corsOptions = {
   origin: [
-    "https://crud-web-books.vercel.app",
+    "https://crud-frontend-books.vercel.app",
     "http://localhost:5173",
     "http://localhost:3000",
   ],
