@@ -7,22 +7,7 @@ import cors from "cors";
 
 const app = express();
 
-// Manual Header Middleware sebagai pengaman tambahan
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With, Accept");
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-  next();
-});
-
-app.use(cors({
-  origin: "*",
-  optionsSuccessStatus: 200
-}));
-
+app.use(cors()); // Paling atas, tanpa opsi ribet dulu
 app.use(express.json());
 
 let isConnected = false;
