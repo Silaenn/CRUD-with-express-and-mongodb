@@ -9,7 +9,7 @@ import { API_URL } from "../config";
 import MetaChip from "../components/ui/MetaChip";
 import { motion } from "framer-motion";
 
-// Reusable InputField — extracted supaya nggak duplikat di Edit
+// InputField disamakan gayanya dengan InfoRow di ShowBook
 export const InputField = ({
   id,
   label,
@@ -19,10 +19,12 @@ export const InputField = ({
   type = "text",
   min,
   max,
-  variants,
+  index = 0,
 }) => (
   <motion.div 
-    variants={variants}
+    initial={{ opacity: 0, x: -20 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ delay: 0.4 + index * 0.1 }}
     className="mb-6 sm:mb-8 md:mb-10 relative"
   >
     {/* Label */}
@@ -62,11 +64,11 @@ InputField.propTypes = {
   type: PropTypes.string,
   min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  variants: PropTypes.object,
+  index: PropTypes.number,
 };
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
@@ -193,18 +195,20 @@ const CreateBooks = () => {
             animate="visible"
             variants={containerVariants}
           >
-            {/* Form section label */}
+            {/* Form section label — Mengikuti gaya ShowBook */}
             <motion.div 
               className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8"
-              variants={itemVariants}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
             >
               <span className="hud-tag text-sm sm:text-base">NEW_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
               <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
             </motion.div>
 
-            <InputField id="title" label="Title" value={title} onChange={setTitle} placeholder="ENTER_TITLE..." variants={itemVariants} />
-            <InputField id="author" label="Author" value={author} onChange={setAuthor} placeholder="ENTER_AUTHOR..." variants={itemVariants} />
+            <InputField id="title" label="Title" value={title} onChange={setTitle} placeholder="ENTER_TITLE..." index={0} />
+            <InputField id="author" label="Author" value={author} onChange={setAuthor} placeholder="ENTER_AUTHOR..." index={1} />
             <InputField
               id="publishYear"
               label="Publish Date"
@@ -212,13 +216,15 @@ const CreateBooks = () => {
               onChange={setPublishYear}
               placeholder="YYYY-MM-DD"
               type="date"
-              variants={itemVariants}
+              index={2}
             />
 
-            {/* Divider dengan chevron */}
+            {/* Divider — Mengikuti gaya ShowBook */}
             <motion.div 
               className="flex items-center gap-3 my-8 sm:my-10"
-              variants={itemVariants}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
             >
               <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
               <div className="flex-1 h-[1px] bg-hud/20" />
@@ -227,7 +233,9 @@ const CreateBooks = () => {
              <motion.button 
                type="submit" 
                className="btn-hud w-fit text-sm sm:text-base"
-               variants={itemVariants}
+               initial={{ opacity: 0, y: 10 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.8, duration: 0.4 }}
                whileHover={{ scale: 1.05 }}
                whileTap={{ scale: 0.95 }}
              >
@@ -242,4 +250,3 @@ const CreateBooks = () => {
 
 
 export default CreateBooks;
-

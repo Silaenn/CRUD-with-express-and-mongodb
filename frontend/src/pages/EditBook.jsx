@@ -160,15 +160,17 @@ const EditBook = () => {
           >
             <motion.div 
               className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8"
-              variants={itemVariants}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
             >
               <span className="hud-tag text-sm sm:text-base">MODIFY_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
               <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
             </motion.div>
 
-            <InputField id="title" label="Title" value={title} onChange={setTitle} variants={itemVariants} />
-            <InputField id="author" label="Author" value={author} onChange={setAuthor} variants={itemVariants} />
+            <InputField id="title" label="Title" value={title} onChange={setTitle} index={0} />
+            <InputField id="author" label="Author" value={author} onChange={setAuthor} index={1} />
             <InputField
               id="publishYear"
               label="Publish Date"
@@ -176,12 +178,14 @@ const EditBook = () => {
               onChange={setPublishYear}
               placeholder="YYYY-MM-DD"
               type="date"
-              variants={itemVariants}
+              index={2}
             />
 
             <motion.div 
               className="flex items-center gap-3 my-8 sm:my-10"
-              variants={itemVariants}
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
             >
               <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
               <div className="flex-1 h-[1px] bg-hud/20" />
@@ -190,7 +194,9 @@ const EditBook = () => {
             <motion.button 
               type="submit" 
               className="btn-hud w-fit text-sm sm:text-base"
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
