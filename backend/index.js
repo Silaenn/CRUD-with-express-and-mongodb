@@ -7,7 +7,20 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors()); // Paling atas, tanpa opsi ribet dulu
+// Configure CORS with explicit allowed origins
+const corsOptions = {
+  origin: [
+    "https://crud-web-books.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:3000",
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 let isConnected = false;
