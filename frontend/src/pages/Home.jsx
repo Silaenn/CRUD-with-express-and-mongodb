@@ -62,7 +62,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-void">
+    <div className="min-h-screen">
 
       {/* Header */}
       <header className="relative overflow-hidden ">

@@ -126,7 +126,7 @@ const CreateBooks = () => {
   };
 
   return (
-    <div className="min-h-screen bg-void">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="relative border-b border-hud/30 overflow-hidden">
         <motion.div 
