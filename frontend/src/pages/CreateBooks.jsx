@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { API_URL } from "../config";
 import MetaChip from "../components/ui/MetaChip";
+import { motion } from "framer-motion";
 
 // Reusable InputField — extracted supaya nggak duplikat di Edit
 export const InputField = ({
@@ -18,8 +19,12 @@ export const InputField = ({
   type = "text",
   min,
   max,
+  variants,
 }) => (
-  <div className="mb-6 sm:mb-8 md:mb-10 relative">
+  <motion.div 
+    variants={variants}
+    className="mb-6 sm:mb-8 md:mb-10 relative"
+  >
     {/* Label */}
     <label htmlFor={id} className="hud-label text-hud-dim text-sm sm:text-base mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
       <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-hud rotate-45 inline-block flex-shrink-0" />
@@ -45,7 +50,7 @@ export const InputField = ({
       />
     </div>
 
-  </div>
+  </motion.div>
 );
 
 InputField.propTypes = {
@@ -57,6 +62,7 @@ InputField.propTypes = {
   type: PropTypes.string,
   min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  variants: PropTypes.object,
 };
 
 const CreateBooks = () => {
@@ -98,15 +104,44 @@ const CreateBooks = () => {
       });
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100, damping: 20 },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-void">
       {/* Header */}
       <header className="relative border-b border-hud/30 overflow-hidden">
-        <div className="lg:max-w-5xl md:max-w-4xl sm:max-w-3xl max-w-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
+        <motion.div 
+          className="lg:max-w-5xl md:max-w-4xl sm:max-w-3xl max-w-2xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
           <div className="lg:max-w-4xl md:max-w-3xl sm:max-w-2xl max-w-xl mx-auto">
-            <MetaChip label="SYSTEM" value="LIBRARY DATABASE · CREATE NEW" className="mb-5" />
+            <motion.div variants={itemVariants}>
+              <MetaChip label="SYSTEM" value="LIBRARY DATABASE · CREATE NEW" className="mb-5" />
+            </motion.div>
             <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-3">
-              <div className="flex items-center gap-3 sm:gap-4">
+              <motion.div 
+                className="flex items-center gap-3 sm:gap-4"
+                variants={itemVariants}
+              >
                 {/* Hazard bar kiri — tampil hanya di lg ke atas */}
                 <div className="hidden lg:flex gap-1.5">
                   <div
@@ -131,14 +166,17 @@ const CreateBooks = () => {
                     style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
                   />
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="mt-auto lg:ml-auto">
+              <motion.div 
+                className="mt-auto lg:ml-auto"
+                variants={itemVariants}
+              >
                 <BackButton />
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </header>
 
       {/* Main */}
@@ -148,17 +186,25 @@ const CreateBooks = () => {
             <Spinner />
           </div>
         ) : (
-          <form className="lg:max-w-4xl md:max-w-3xl sm:max-w-2xl max-w-xl mx-auto flex flex-col bg-void/90 py-4 sm:py-6" onSubmit={handleSaveBook}>
+          <motion.form 
+            className="lg:max-w-4xl md:max-w-3xl sm:max-w-2xl max-w-xl mx-auto flex flex-col bg-void/90 py-4 sm:py-6" 
+            onSubmit={handleSaveBook}
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+          >
             {/* Form section label */}
-            <div className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+            <motion.div 
+              className="flex items-center gap-2 sm:gap-3 mb-6 sm:mb-8"
+              variants={itemVariants}
+            >
               <span className="hud-tag text-sm sm:text-base">NEW_ENTRY</span>
               <div className="flex-1 h-[1px] bg-hud/20" />
               <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
+            </motion.div>
 
-            </div>
-
-            <InputField id="title" label="Title" value={title} onChange={setTitle} placeholder="ENTER_TITLE..." />
-            <InputField id="author" label="Author" value={author} onChange={setAuthor} placeholder="ENTER_AUTHOR..." />
+            <InputField id="title" label="Title" value={title} onChange={setTitle} placeholder="ENTER_TITLE..." variants={itemVariants} />
+            <InputField id="author" label="Author" value={author} onChange={setAuthor} placeholder="ENTER_AUTHOR..." variants={itemVariants} />
             <InputField
               id="publishYear"
               label="Publish Date"
@@ -166,18 +212,28 @@ const CreateBooks = () => {
               onChange={setPublishYear}
               placeholder="YYYY-MM-DD"
               type="date"
+              variants={itemVariants}
             />
 
             {/* Divider dengan chevron */}
-            <div className="flex items-center gap-3 my-8 sm:my-10">
+            <motion.div 
+              className="flex items-center gap-3 my-8 sm:my-10"
+              variants={itemVariants}
+            >
               <div className="w-2 h-2 bg-hud rotate-45 shadow-hud-sm animate-pulse" />
               <div className="flex-1 h-[1px] bg-hud/20" />
-            </div>
+            </motion.div>
 
-             <button type="submit" className="btn-hud w-fit text-sm sm:text-base">
+             <motion.button 
+               type="submit" 
+               className="btn-hud w-fit text-sm sm:text-base"
+               variants={itemVariants}
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+             >
                [+] SAVE_ENTRY
-             </button>
-          </form>
+             </motion.button>
+          </motion.form>
         )}
       </main>
     </div>
@@ -185,3 +241,4 @@ const CreateBooks = () => {
 };
 
 export default CreateBooks;
+

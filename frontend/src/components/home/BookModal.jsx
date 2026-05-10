@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { AiOutlineClose } from "react-icons/ai";
 import { PiBookOpenTextLight, PiCalendarBlank, PiUserFocus } from "react-icons/pi";
 import { BiInfoCircle } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 const BookModal = ({ book, onClose }) => {
   const modalRef = useRef(null);
@@ -41,15 +42,46 @@ const BookModal = ({ book, onClose }) => {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [onClose]);
 
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
+  const modalVariants = {
+    hidden: { scale: 0.9, opacity: 0, y: 20 },
+    visible: { 
+      scale: 1, 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        type: "spring", 
+        stiffness: 300, 
+        damping: 25,
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      }
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={backdropVariants}
       onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
       style={{ background: "rgba(5,5,8,0.85)", backdropFilter: "blur(8px)" }}
     >
-      <div
+      <motion.div
+        variants={modalVariants}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-xl bg-obsidian border border-hud/30 animate-in fade-in zoom-in duration-200 overflow-hidden"
+        className="relative w-full max-w-xl bg-obsidian border border-hud/30 overflow-hidden"
         style={{ boxShadow: "0 0 60px rgba(255,184,0,0.1), inset 0 0 40px rgba(255,184,0,0.02)" }}
         role="dialog"
         aria-modal="true"
@@ -80,7 +112,7 @@ const BookModal = ({ book, onClose }) => {
         {/* Header Section */}
         <div className="relative px-6 py-5 border-b border-hud/10 bg-void/50 z-10">
           <div className="flex justify-between items-start mb-1">
-            <div className="flex items-center gap-3">
+            <motion.div variants={itemVariants} className="flex items-center gap-3">
               <div className="w-10 h-10 flex items-center justify-center border border-hud/20 bg-hud/5 rounded-sm">
                 <img src="/icons/tribal-flame.png" alt="" className="w-10 h-8 opacity-80" />
               </div>
@@ -88,7 +120,7 @@ const BookModal = ({ book, onClose }) => {
                 <span className="hud-label text-[0.6rem] block text-hud/80 mb-0.5">DATA_STREAM :: ACCESSED</span>
                 <h1 className="font-display text-xl text-smoke tracking-wider uppercase" id="book-modal-title">RECORD_VIEW</h1>
               </div>
-            </div>
+            </motion.div>
             
             <button
               onClick={onClose}
@@ -101,7 +133,7 @@ const BookModal = ({ book, onClose }) => {
           </div>
           
           {/* Micro Meta Info */}
-          <div className="flex items-center gap-4 mt-4">
+          <motion.div variants={itemVariants} className="flex items-center gap-4 mt-4">
             <span className="flex items-center gap-1.5 font-mono text-[0.6rem] text-hud/70 uppercase">
               <span className="w-1 h-1 bg-hud rotate-45" />
               STATUS: <span className="text-smoke">ENCRYPTED</span>
@@ -112,7 +144,7 @@ const BookModal = ({ book, onClose }) => {
             </span>
             <div className="flex-1 h-[1px] bg-hud/10" />
             <span className="font-mono text-[0.6rem] text-muted">ID_REF: {book._id?.slice(-8).toUpperCase()}</span>
-          </div>
+          </motion.div>
         </div>
 
         {/* Body Section */}
@@ -121,7 +153,7 @@ const BookModal = ({ book, onClose }) => {
           <div className="flex flex-col gap-6">
             
             {/* Title Block */}
-            <div className="group">
+            <motion.div variants={itemVariants} className="group">
               <div className="flex items-center gap-2 mb-2">
                 <PiBookOpenTextLight className="text-hud text-lg" />
                 <span className="hud-label text-[0.65rem] text-hud/50">ENTRY_SUBJECT</span>
@@ -129,10 +161,10 @@ const BookModal = ({ book, onClose }) => {
               <h2 className="font-display text-2xl sm:text-3xl text-smoke leading-none uppercase tracking-tight group-hover:text-hud transition-colors duration-300">
                 {book.title}
               </h2>
-            </div>
+            </motion.div>
 
             {/* Grid for Author and Year */}
-            <div className="grid grid-cols-2 gap-4">
+            <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4">
               <div className="p-3 border border-hud/10 bg-obsidian/50 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-8 h-[1px] bg-hud/30" />
                 <div className="flex items-center gap-2 mb-1.5">
@@ -154,10 +186,10 @@ const BookModal = ({ book, onClose }) => {
                   {book.publishYear}
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Analysis / System Log Section */}
-            <div className="relative mt-2">
+            <motion.div variants={itemVariants} className="relative mt-2">
               <div className="flex items-center gap-3 mb-3">
                 <BiInfoCircle className="text-hud/40" />
                 <span className="hud-label text-[0.65rem]">SYSTEM_ANALYSIS</span>
@@ -169,7 +201,7 @@ const BookModal = ({ book, onClose }) => {
                 <span className="text-hud-dim">{"[LOG_02]"}</span> Entry confirmed: {book.title}.<br/>
                 <span className="text-hud-dim">{"[LOG_03]"}</span> This record is registered under the authority of {book.author}. All rights reserved under Library Protocol 77-B.
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -180,20 +212,23 @@ const BookModal = ({ book, onClose }) => {
               <div key={i} className="w-1.5 h-1.5 bg-hud/20 rotate-45" />
             ))}
           </div>
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={onClose}
             className="font-mono text-xs uppercase tracking-[0.2em] text-hud hover:text-smoke transition-colors py-1 px-3 border border-hud/0 hover:border-hud/30"
           >
             [ DISMISS_INTERFACE ]
-          </button>
+          </motion.button>
         </div>
 
         {/* Hazard bottom bar */}
         <div className="hazard-bar-sm w-full relative z-10" />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
+
 
 BookModal.propTypes = {
   book: PropTypes.shape({

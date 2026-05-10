@@ -3,6 +3,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { useSnackbar } from "notistack";
 import { API_URL } from "../../config";
+import { motion } from "framer-motion";
 
 const DeleteBookModal = ({ book, onClose, onDelete }) => {
   const [loading, setLoading] = useState(false);
@@ -30,12 +31,43 @@ const DeleteBookModal = ({ book, onClose, onDelete }) => {
 
   if (!book) return null;
 
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
+  const modalVariants = {
+    hidden: { scale: 0.95, opacity: 0, y: 10 },
+    visible: { 
+      scale: 1, 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        type: "spring", 
+        stiffness: 400, 
+        damping: 30,
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      }
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      variants={backdropVariants}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-void/80 backdrop-blur-sm p-4"
       onClick={onClose}
     >
-      <div
+      <motion.div
+        variants={modalVariants}
         className="relative lg:max-w-2xl md:max-w-xl sm:max-w-lg max-w-md w-full bg-obsidian border border-danger/30 p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
         style={{ boxShadow: "0 0 40px rgba(255,45,45,0.12), inset 0 0 20px rgba(255,45,45,0.05)" }}
@@ -47,7 +79,7 @@ const DeleteBookModal = ({ book, onClose, onDelete }) => {
         <span className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-danger" />
 
         {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
+        <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
           <span className="hud-tag-danger text-sm sm:text-base">[!] WARNING</span>
           <div className="flex-1 h-[1px] bg-danger/20" />
           <button 
@@ -56,32 +88,33 @@ const DeleteBookModal = ({ book, onClose, onDelete }) => {
           >
             [X]
           </button>
-        </div>
+        </motion.div>
 
         {/* Content */}
         <div className="flex flex-col items-center text-center">
-          <img
+          <motion.img
+            variants={itemVariants}
             src="/icons/flame-red.png"
             alt=""
             className="w-20 h-auto mb-6 opacity-90 animate-pulse"
             style={{ imageRendering: "pixelated" }}
           />
 
-          <h3 className="font-display text-2xl md:text-3xl leading-tight uppercase text-smoke mb-4">
+          <motion.h3 variants={itemVariants} className="font-display text-2xl md:text-3xl leading-tight uppercase text-smoke mb-4">
             CONFIRM PERMANENT REMOVAL
-          </h3>
+          </motion.h3>
           
-          <div className="bg-danger/5 border border-danger/20 p-4 mb-6 w-full text-left">
+          <motion.div variants={itemVariants} className="bg-danger/5 border border-danger/20 p-4 mb-6 w-full text-left">
              <p className="font-mono text-sm text-center text-danger/80 mb-1 tracking-wider uppercase">Record to be purged:</p>
              <p className="font-display text-xl text-center text-smoke uppercase">{book.title}</p>
-          </div>
+          </motion.div>
 
-          <p className="font-mono text-xs text-muted/70 tracking-wider mb-8 uppercase leading-relaxed">
+          <motion.p variants={itemVariants} className="font-mono text-xs text-muted/70 tracking-wider mb-8 uppercase leading-relaxed">
             THIS ACTION IS IRREVERSIBLE. ALL DATA ASSOCIATED WITH THIS RECORD WILL BE PERMANENTLY ERASED FROM THE ARCHIVES.
-          </p>
+          </motion.p>
 
           {/* Actions */}
-          <div className="flex flex-wrap items-center justify-center gap-6 w-full">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-6 w-full">
             <button
               onClick={handleDeleteBook}
               disabled={loading}
@@ -96,10 +129,10 @@ const DeleteBookModal = ({ book, onClose, onDelete }) => {
             >
               [CANCEL]
             </button>
-          </div>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import BooksCard from "../components/home/BooksCard";
 import MetaChip from "../components/ui/MetaChip";
 import { API_URL } from "../config";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -31,6 +32,35 @@ const Home = () => {
     fetchBooks();
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 100, damping: 20 },
+    },
+  };
+
+  const headerVariants = {
+    hidden: { y: -50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", stiffness: 120, damping: 14 },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-void">
 
@@ -44,11 +74,21 @@ const Home = () => {
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6">
-          <MetaChip label="SYSTEM" value="LIBRARY DATABASE · ROOT" className="mb-5" />
+        <motion.div 
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pt-6 sm:pt-8 pb-6"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div variants={headerVariants}>
+            <MetaChip label="SYSTEM" value="LIBRARY DATABASE · ROOT" className="mb-5" />
+          </motion.div>
 
           <div className="flex flex-col gap-6 lg:flex-row lg:justify-between lg:items-end">
-            <div className="relative flex items-center gap-3 sm:gap-4">
+            <motion.div 
+              className="relative flex items-center gap-3 sm:gap-4"
+              variants={itemVariants}
+            >
               {/* Hazard bar kiri — tampil hanya di lg ke atas */}
               <div className="hidden lg:flex gap-1.5">
                 <div
@@ -74,17 +114,23 @@ const Home = () => {
                   style={{ background: "repeating-linear-gradient(45deg, #FFB800 0px, #FFB800 4px, #0a0a0f 4px, #0a0a0f 8px)" }}
                 />
               </div>
-            </div>
+            </motion.div>
 
-            <div className="mb-1 flex items-stretch gap-3 self-start lg:self-auto lg:justify-end">
+            <motion.div 
+              className="mb-1 flex items-stretch gap-3 self-start lg:self-auto lg:justify-end"
+              variants={itemVariants}
+            >
               <MetaChip label="RECORDS" value={`${books.length} FOUND`} className="h-12" />
               <Link to="/books/create" className="btn-hud h-12 inline-flex items-center">
                 [+] ADD_ENTRY
               </Link>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="relative left-1/2 -translate-x-1/2 w-screen px-4 sm:px-6 md:px-10 lg:px-12 mt-4">
+          <motion.div 
+            className="relative left-1/2 -translate-x-1/2 w-screen px-4 sm:px-6 md:px-10 lg:px-12 mt-4"
+            variants={itemVariants}
+          >
             <div className="max-w-none flex items-center gap-2 sm:gap-4">
             
             <div className="flex-1 h-[1px] bg-hud/20" />
@@ -93,12 +139,17 @@ const Home = () => {
             </span>
             <div className="flex-1 h-[1px] bg-hud/20" />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </header>
 
       {/* Main */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pb-12 flex-1 flex flex-col">
+      <motion.main 
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-12 pb-12 flex-1 flex flex-col"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.5 }}
+      >
         {loading ? (
           <div className="flex justify-center min-h-[60vh]">
             <Spinner />
@@ -153,7 +204,7 @@ const Home = () => {
         ) : (
           <BooksCard books={books} onDelete={fetchBooks} />
         )}
-      </main>
+      </motion.main>
 
       {/* Footer HUD bar */}
       {/* <div className="fixed bottom-0 left-0 right-0 h-[3px] hazard-bar pointer-events-none opacity-40" /> */}
@@ -162,3 +213,4 @@ const Home = () => {
 };
 
 export default Home;
+
