@@ -6,9 +6,7 @@ import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
 
 const app = express();
-const corsOrigins = process.env.CORS_ORIGIN
-  ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
-  : null;
+const corsOrigins = process.env.CORS_ORIGIN;
 
 app.use(
   cors(
