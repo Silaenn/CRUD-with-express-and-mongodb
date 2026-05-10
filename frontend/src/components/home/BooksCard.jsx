@@ -4,27 +4,69 @@ import { Link } from "react-router-dom";
 
 const BooksCard = ({ books, onDelete }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
-    {books.length === 0 ? (
-      <div className="col-span-full flex flex-col items-center justify-center py-24 gap-4">
-        <img
-          src="/icons/skull-plain.png"
-          alt=""
-          className="w-16 h-auto opacity-30"
-          style={{ imageRendering: "pixelated" }}
-        />
-        <p className="hud-label text-muted">NO_RECORDS_FOUND</p>
-        <p className="font-mono text-sm text-muted/80 text-center max-w-md">
-          There are no entries in the database yet. Add your first book to start tracking records.
-        </p>
-        <Link to="/books/create" className="btn-hud h-11 inline-flex items-center">
-          [+] ADD_FIRST_ENTRY
-        </Link>
-        <img
-          src="/icons/skull-plain.png"
-          alt=""
-          className="w-16 h-auto opacity-10"
-          style={{ imageRendering: "pixelated", transform: "scaleY(-1)" }}
-        />
+      {books.length === 0 ? (
+      <div className="col-span-full flex flex-col items-center justify-center py-8 sm:py-16 px-3 sm:px-6">
+        <div className="hud-panel w-full max-w-xl sm:max-w-2xl bg-void/60 backdrop-blur-sm border border-hud/20 p-10 sm:p-10 flex flex-col items-center gap-6 sm:gap-7 overflow-hidden relative">
+          {/* Subtle grid background */}
+          <div className="absolute inset-0 bg-circuit opacity-[0.03] pointer-events-none" />
+          {/* Scanline decoration */}
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-hud/20 animate-scanline-v pointer-events-none" />
+
+          {/* Icon */}
+          <div className="relative">
+            <div className="absolute -inset-5 border border-hud/5 rounded-full animate-pulse-hud" />
+            <div className="absolute -inset-2.5 border border-hud/10 rounded-full" />
+            <img
+              src="/icons/tribal-flame.png"
+              alt=""
+              className="w-10 xs:w-12 sm:w-16 h-auto opacity-70 relative z-10"
+              style={{ imageRendering: "pixelated" }}
+            />
+          </div>
+
+          {/* Title */}
+          <div className="mt-2 flex flex-col items-center gap-1.5 relative z-10 text-center">
+            <h3 className="font-display text-lg xs:text-xl sm:text-2xl text-hud tracking-[0.15em] sm:tracking-[0.2em] uppercase text-glow-hud">
+              SYSTEM_EMPTY
+            </h3>
+            <div className="flex items-center gap-2">
+              <span className="h-[1px] w-5 sm:w-8 bg-hud/30" />
+              <p className="hud-label text-muted text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap">
+                LOG_ID: 0x00_NULL_RECORDS
+              </p>
+              <span className="h-[1px] w-5 sm:w-8 bg-hud/30" />
+            </div>
+          </div>
+
+          {/* Body text */}
+          <p className="font-mono text-[10px] xs:text-xs sm:text-sm text-smoke/60 text-center max-w-[260px] xs:max-w-xs sm:max-w-sm leading-relaxed relative z-10">
+            Database scan complete. No active data packets detected.
+            User initialization required to populate the local library module.
+          </p>
+
+          {/* CTA */}
+          <div className="relative z-10 w-full flex justify-center">
+            <Link
+              to="/books/create"
+              className="btn-hud group flex items-center justify-center gap-2 sm:gap-4 w-full sm:w-auto text-[10px] xs:text-xs sm:text-sm px-4 py-2.5"
+            >
+              <span className="text-hud-xs opacity-50 group-hover:opacity-100 transition-opacity hidden sm:block">
+                0x01
+              </span>
+              <span>[+] INITIALIZE_NEW_ENTRY</span>
+            </Link>
+          </div>
+
+          {/* Decorative HUD metadata — hanya muncul di sm ke atas */}
+          <div className="absolute top-3 left-3 hud-coords opacity-100 hidden sm:block text-[8px] leading-relaxed">
+            LAT: 35.6895<br />
+            LNG: 139.6917
+          </div>
+          <div className="absolute bottom-3 right-3 hud-coords opacity-100 text-right hidden sm:block text-[8px] leading-relaxed">
+            STATUS: STANDBY<br />
+            SIGNAL: LOW
+          </div>
+        </div>
       </div>
     ) : (
       books.map((item, index) => (
