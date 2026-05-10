@@ -6,12 +6,12 @@ import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
 
 const app = express();
-const corsOrigins = process.env.CORS_ORIGIN;
+const corsOrigins = process.env.CORS_ORIGIN || "*";
 
 app.use(cors({
-  origin: "*",
+  origin: corsOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
 }));
 
 app.options("*", cors());
